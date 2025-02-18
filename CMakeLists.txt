@@ -4,6 +4,9 @@ project(VL1)
 
 set(SOURCE
     src/main.cpp
+    src/loadsave.cpp
+    src/window_io.cpp
+    src/lidar_base.cpp
     src/LidarDataParser.cpp
     src/YDLidarController.cpp
     src/lidar_tminiplus.cpp

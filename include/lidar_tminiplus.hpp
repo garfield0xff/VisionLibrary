@@ -1,4 +1,5 @@
 #ifndef _LIDAR_TMINIPLUS_FMT_
+#define _LIDAR_TMINIPLUS_FMT_
 
 #include <lidar_base.hpp>
 #include <sys/termios.h>
@@ -6,6 +7,8 @@
 namespace vl {
 
 #define START_BIT 0xA5
+
+
 
 enum YDLidarScanModes
 {
@@ -25,15 +28,17 @@ class YDLidarController : public BaseLidarController
 {
 
 public:
-
     YDLidarController();
     ~YDLidarController();
 
-    bool setPort( String port)      override;
-    bool startScan()    override;
-    bool stopScan()     override;
 
-    LidarController newController() const override;
+    bool setPort( String port)                  override;
+    bool startScan()                            override;
+    bool stopScan()                             override;
+    LidarController newController()      const  override;
+
+protected:
+    bool sendSerialHeader(Header header) const  override;
 
 }; // class YDLidarController
 

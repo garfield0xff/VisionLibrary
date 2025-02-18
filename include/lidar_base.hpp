@@ -1,13 +1,18 @@
 #ifndef _LIDAR_BASE_FMT_
+#define _LIDAR_BASE_FMT_
 
 #include <vlstd.hpp>
-
+#include <vector>
+#include <unistd.h>
+#include <fcntl.h>
+#include <window_io.hpp>
 
 namespace vl
 {
 
 class BaseLidarController;
 typedef std::shared_ptr<BaseLidarController> LidarController;
+typedef std::vector<uint8_t> Header;
 
 enum LidarDevice 
 {
@@ -18,9 +23,8 @@ class BaseLidarController
 {
 
 public:
-    BaseLidarController();
-
-    virtual ~BaseLidarController() {};
+    BaseLidarController() {};
+    ~BaseLidarController() {};
 
     virtual bool setPort( String port );
     virtual bool startScan();
@@ -30,8 +34,13 @@ public:
 protected:
     String m_port;
     Bps m_buadrate;
+    FileDescriptor m_fd;
     unsigned int m_timeoutMS;
     bool m_connected;
+
+    virtual bool sendSerialHeader(Header header) const;
+
+
 
 }; // namespace vl
 
