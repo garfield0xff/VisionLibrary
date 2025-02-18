@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <window_io.hpp>
+#include <lidar_res.hpp>
 
 namespace vl
 {
@@ -29,6 +30,7 @@ public:
     virtual bool setPort( String port );
     virtual bool startScan();
     virtual bool stopScan();
+    
     virtual LidarController newController() const;
 
 protected:
@@ -39,6 +41,7 @@ protected:
     bool m_connected;
 
     virtual bool sendSerialHeader(Header header) const;
+    virtual bool printSerialLog(int flag)        const = 0; // Todo : 추후 라이더 모듈이 추가되면 완성
 
 
 

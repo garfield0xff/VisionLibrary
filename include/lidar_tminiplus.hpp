@@ -21,7 +21,7 @@ enum YDLidarScanModes
     LIDAR_FREQ_UP_1HZ       = 0x0B,
     LIDAR_FREQ_DOWN_1HZ     = 0x0C,
     LIDAR_GET_FREQ          = 0x0D,
-    LIDAR_SOFT_RESTART      = 0x40
+    LIDAR_SOFT_RESTART      = 0x40,
 };
 
 class YDLidarController : public BaseLidarController 
@@ -37,8 +37,18 @@ public:
     bool stopScan()                             override;
     LidarController newController()      const  override;
 
+    bool getDeviceInfo();
+    bool getScanFreq();
+    bool IncreaseScanFreq0_1Hz();
+    bool decreaseScanFreq0_1Hz();
+    bool IncreaseScanFreq1Hz();
+    bool decreaseScanFreq1Hz();
+    bool restart();
+
+
 protected:
     bool sendSerialHeader(Header header) const  override;
+    bool printSerialLog(int flag)       const  override;
 
 }; // class YDLidarController
 
