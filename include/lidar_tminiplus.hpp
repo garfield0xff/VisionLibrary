@@ -24,6 +24,15 @@ enum YDLidarScanModes
     LIDAR_SOFT_RESTART      = 0x40,
 };
 
+
+enum YDLidarResponseMode
+{
+    RESPONSE_CONTINUOUS,
+    RESPONSE_NO_ANSWER,
+    RESPONSE_SINGLE_RESPONSE,
+};
+
+
 class YDLidarController : public BaseLidarController 
 {
 

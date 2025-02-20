@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <window_io.hpp>
 #include <lidar_res.hpp>
+#include <thread>
 
 namespace vl
 {
@@ -43,7 +44,9 @@ protected:
     virtual bool sendSerialHeader(Header header) const;
     virtual bool printSerialLog(int flag)        const = 0; // Todo : 추후 라이더 모듈이 추가되면 완성
 
-
+    std::atomic<bool>  m_isScanning;
+    std::thread        m_scanThread;
+    std::mutex         m_mutex;
 
 }; // namespace vl
 

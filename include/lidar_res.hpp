@@ -11,14 +11,14 @@ struct YDLidarScanResponse
 {
     uint16_t    pakcet_header;      //  2B PH   -  0x55AA 패킷 헤더
     uint8_t     packet_type;        //  1B CT   -  패킷 타입 및 주파수 정보
-    uint8_t     sample_count;       //  1B LSN  -  샘플링 포인트 개수
+    uint8_t     sample_count;       //  1B LSN  -  샘플링 포인트 개수 -> 시작 패킷인경우 LSN = 1 else >1
     uint16_t    start_angle;        //  2B FSA  -  첫번째 포인트 클라우드 시작 각도
     uint16_t    end_angle;          //  2B LSA  -  마지막 포인트 클라우드 종료 각도
     uint16_t    check_code;         //  2B CS   -  XOR 체크 코드
-    struct SampleNode               
+    struct SampleNode               //  3B SI 
     {
-        uint8_t     intensity;      //  1B  -   강도
-        uint16_t    distance;       //  2B  -   거리
+        uint8_t     intensity;      //  1B SI(1B)  -   SI(1) 강도
+        uint16_t    distance;       //  2B SI(2B)  -   Lshiftbit(Si(3)) + Rshiftbit(Si(2))
     } samples[];
 };
 #pragma pack(pop)
