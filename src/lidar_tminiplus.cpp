@@ -26,6 +26,15 @@ bool YDLidarController::setPort(String port)
 }
 
 
+// bool isValidChecksum(uint8_t* buffer, int len) {
+//     uint16_t calculated_checksum = 0;
+//     for (int i = 0; i < len - 2; i++) {
+//         calculated_checksum ^= buffer[i];  // XOR checksum 계산
+//     }
+//     uint16_t received_checksum = (buffer[len - 2] << 8) | buffer[len - 1];
+//     return calculated_checksum == received_checksum;
+// }
+
 
 bool YDLidarController::startScan()
 {
@@ -53,41 +62,56 @@ bool YDLidarController::printSerialLog(int flag) const
     typedef response::lidar::YDLidarScanResponse ScanRes;
     uint8_t buffer[2048];
 
+    int total_sample_count = 0;  
+
     if(flag == RESPONSE_CONTINUOUS)
     {
         while(m_isScanning.load())
         {
             int n = read(m_fd, buffer, sizeof(buffer));
-            if (n < 0) {
-                perror("Error reading from serial port");
-                break;
-            }
-
             if (n < 10) continue;
 
-            if (buffer[0] == 0xAA && buffer[1] == 0x55) 
-            {
-                ScanRes* res = reinterpret_cast<ScanRes*>(buffer);
-                std::cout << "Sample Count: " << std::dec << (int)res->sample_count << std::endl;
-                std::cout << "Start Angle: " << (res->start_angle >> 1) / 64.0 << "°" << std::endl;
-                std::cout << "End Angle: " << (res->end_angle >> 1) / 64.0 << "°" << std::endl;
-                
+            // 🛑 패킷 헤더 검증
+            if (buffer[0] != 0xAA || buffer[1] != 0x55) {
+                std::cerr << "[ERROR] Packet Header Mismatch! Skipping packet..." << std::endl;
+                continue;
+            } 
+
+            ScanRes* res = reinterpret_cast<ScanRes*>(buffer);
+
+            if(res->sample_count != 0x01) {
+                total_sample_count += res->sample_count;
+                // std::cout << "Current Packet Sample Count: " << int(res->sample_count) << std::endl;
+                // std::cout << "Total Accumulated Samples: " << total_sample_count << std::endl;
+
                 for (int i = 0; i < res->sample_count; i++) {
                     ScanRes::SampleNode sample = res->samples[i];
-                    uint8_t si2 = sample.distance & 0xFF;
-                    uint8_t si3 = (sample.distance >> 8) & 0xFF;
-                    float distance = ( si3 << 6 ) + ( si2 >> 2);
-                    std::cout << "Sample " << i + 1 << ": ";
-                    std::cout << "Distance: " << std::dec <<  distance * 0.001 << " m, ";
-                    std::cout << "Intensity: " << (int)sample.intensity << std::endl;
+                    if(sample.intensity > 0x00)
+                    {
+                        uint16_t distance =  static_cast<uint16_t>(( static_cast<uint16_t>(sample.distance_high) << 6 ) + (static_cast<uint16_t>(sample.distance_low) >> 2));
+                        uint8_t flag = ( sample.distance_low & 0xC0 ) >> 6;
+                        if(distance > 5000) std::cout << "overflow!!!!!!" << std::endl;
+                        
+                        std::cout << "Sample " << i + 1 << ": ";
+                        std::cout << "Flag " << int(flag) << " ";
+                        std::cout << "Distance: " << std::dec <<  distance * 0.001 << " m, ";
+                        std::cout << "Intensity: " << (int)sample.intensity << " " << std::endl;
+                        std::cout << "----------------------------\n" << std::endl;
+                        
+                    }
                 }
-                std::cout << "----------------------------\n" << std::endl;
-
             }
+
+            // 🛑 시리얼 버퍼 주기적으로 비우기
+            tcflush(m_fd, TCIOFLUSH);
         }
     }
+
+    // std::cout << "[INFO] Final Total Sample Count: " << total_sample_count << std::endl;
     return true;
 }
+
+
 
 bool YDLidarController::stopScan()
 {

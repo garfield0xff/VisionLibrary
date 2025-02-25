@@ -17,10 +17,16 @@ struct YDLidarScanResponse
     uint16_t    check_code;         //  2B CS   -  XOR 체크 코드
     struct SampleNode               //  3B SI 
     {
-        uint8_t     intensity;      //  1B SI(1B)  -   SI(1) 강도
-        uint16_t    distance;       //  2B SI(2B)  -   Lshiftbit(Si(3)) + Rshiftbit(Si(2))
+        uint8_t    intensity;      //  1B SI(1B)  -   SI(1) 강도
+        uint8_t    distance_low;       //  2B SI(2B)  -   Lshiftbit(Si(3)) + Rshiftbit(Si(2))
+        uint8_t    distance_high;
     } samples[];
+
+    
+
 };
+
+
 #pragma pack(pop)
 
 #pragma pack(push, 1)
