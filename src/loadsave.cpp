@@ -6,6 +6,7 @@
 
 
 namespace vl {
+namespace lidar {
 
 bool
 loadLidar(const String port, int flags) 
@@ -19,11 +20,11 @@ loadLidar(const String port, int flags)
         std::cout << "[INFO] YDLIDAR SELECTED" << std::endl;
         controller->setPort(port);
         controller->startScan();
-        sleep(30);
+        sleep(20);
         controller->stopScan();
     }
 
     return true;
 }
-
-}
+} // namespace lidar
+} // namespace vl

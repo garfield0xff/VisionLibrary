@@ -1,10 +1,10 @@
 #include <lidar_tminiplus.hpp>
-
 #include <vector>
 
 
-namespace vl {
 
+namespace vl {
+namespace lidar{
 
 YDLidarController::YDLidarController() 
 {
@@ -59,7 +59,6 @@ bool YDLidarController::startScan()
 
 bool YDLidarController::printSerialLog(int flag) const
 {
-    typedef response::lidar::YDLidarScanResponse ScanRes;
     uint8_t buffer[2048];
 
     int total_sample_count = 0;  
@@ -71,39 +70,9 @@ bool YDLidarController::printSerialLog(int flag) const
             int n = read(m_fd, buffer, sizeof(buffer));
             if (n < 10) continue;
 
-            // 🛑 패킷 헤더 검증
-            if (buffer[0] != 0xAA || buffer[1] != 0x55) {
-                std::cerr << "[ERROR] Packet Header Mismatch! Skipping packet..." << std::endl;
-                continue;
-            } 
-
-            ScanRes* res = reinterpret_cast<ScanRes*>(buffer);
-
-            if(res->sample_count != 0x01) {
-                total_sample_count += res->sample_count;
-                // std::cout << "Current Packet Sample Count: " << int(res->sample_count) << std::endl;
-                // std::cout << "Total Accumulated Samples: " << total_sample_count << std::endl;
-
-                for (int i = 0; i < res->sample_count; i++) {
-                    ScanRes::SampleNode sample = res->samples[i];
-                    if(sample.intensity > 0x00)
-                    {
-                        uint16_t distance =  static_cast<uint16_t>(( static_cast<uint16_t>(sample.distance_high) << 6 ) + (static_cast<uint16_t>(sample.distance_low) >> 2));
-                        uint8_t flag = ( sample.distance_low & 0xC0 ) >> 6;
-                        if(distance > 5000) std::cout << "overflow!!!!!!" << std::endl;
-                        
-                        std::cout << "Sample " << i + 1 << ": ";
-                        std::cout << "Flag " << int(flag) << " ";
-                        std::cout << "Distance: " << std::dec <<  distance * 0.001 << " m, ";
-                        std::cout << "Intensity: " << (int)sample.intensity << " " << std::endl;
-                        std::cout << "----------------------------\n" << std::endl;
-                        
-                    }
-                }
-            }
-
+            vl::lidar::decode(buffer, n);            
             // 🛑 시리얼 버퍼 주기적으로 비우기
-            tcflush(m_fd, TCIOFLUSH);
+            // tcflush(m_fd, TCIOFLUSH);
         }
     }
 
@@ -194,4 +163,5 @@ bool YDLidarController::sendSerialHeader(Header header) const
 }
 
 
-}
+} //namespace lidar
+} //namespace vl

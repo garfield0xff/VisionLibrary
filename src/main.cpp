@@ -4,7 +4,7 @@
 int main()
 {
     std::string portName = "/dev/cu.usbserial-0001";
-    if(!vl::loadLidar(portName, vl::YDLidar))
+    if(!vl::lidar::loadLidar(portName, vl::lidar::YDLidar))
     {
         std::cerr << "error" << std::endl;
     };

@@ -4,11 +4,13 @@
 #include <lidar_base.hpp>
 #include <sys/termios.h>
 
+
 namespace vl {
 
+namespace lidar 
+{
+
 #define START_BIT 0xA5
-
-
 
 enum YDLidarScanModes
 {
@@ -32,12 +34,23 @@ enum YDLidarResponseMode
     RESPONSE_SINGLE_RESPONSE,
 };
 
-
+/**
+ * @class YDLidarController
+ * @brief A class that provides to control YDLidar Device
+ * 
+ */
 class YDLidarController : public BaseLidarController 
 {
 
 public:
+    /**
+     * @brief  Default constructor for YDLidarController.
+     */
     YDLidarController();
+
+    /**
+     * @brief  Destructor for YDLidarController.
+     */
     ~YDLidarController();
 
 
@@ -61,7 +74,7 @@ protected:
 
 }; // class YDLidarController
 
-
+} // namespace lidar
 } // namespace vl
 
 #endif /*LIDARTMINIPLUSFMT*/

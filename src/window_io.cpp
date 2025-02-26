@@ -11,8 +11,6 @@ WindowBackend::WindowBackend()
     memset(&m_tty, 0, sizeof(m_tty));
 }
 
-
-// SerialWindowBackend
 bool SerialWindowBackend::initTermios(FileDescriptor fd)
 {   
     m_fd = fd;

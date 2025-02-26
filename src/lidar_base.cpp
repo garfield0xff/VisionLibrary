@@ -2,6 +2,8 @@
 
 namespace vl 
 {
+namespace lidar
+{
 
 bool BaseLidarController::setPort( String port ) 
 {
@@ -37,4 +39,5 @@ LidarController BaseLidarController::newController() const
     return LidarController();
 }
 
-}
+} // namespace lidar
+} // namespace vl
