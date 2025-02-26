@@ -1,0 +1,37 @@
+\doxysection{Lidar\+Data\+Parser.\+h}
+\hypertarget{_lidar_data_parser_8h_source}{}\label{_lidar_data_parser_8h_source}\index{include/LidarDataParser.h@{include/LidarDataParser.h}}
+\mbox{\hyperlink{_lidar_data_parser_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_lidar_point}{LidarPoint}}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_lidar_point_abe16a5fcef0d34edc8152ceb6ad5154d}{angle}};\ \ \ \ \ \ \ \textcolor{comment}{//\ 각도\ (degree)}}
+\DoxyCodeLine{00008\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_lidar_point_aae46228a271a1b7ec89a9613e919090f}{distance}};\ \textcolor{comment}{//\ 거리\ (mm)}}
+\DoxyCodeLine{00009\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_lidar_point_a41891ca7768d36932dc5ba001446c51b}{intensity}};\ \textcolor{comment}{//\ 강도\ (0\string~255)}}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_lidar_scan_packet}{LidarScanPacket}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_lidar_scan_packet_aa5de67489058b6fb73a27a52c488677f}{isStartFrame}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 시작\ 프레임\ 여부}}
+\DoxyCodeLine{00014\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_lidar_scan_packet_a01379a1e99aa6723aead1d7d33206bb8}{ct}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CT\ 필드(상태\ 비트\ 포함)}}
+\DoxyCodeLine{00015\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_lidar_scan_packet_a572a20af7432c99b3fc7786471b46707}{lsn}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 샘플\ 수}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_lidar_scan_packet_adac19563426ea994ef38d3c76324333c}{fsa}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 시작\ 각도}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_lidar_scan_packet_ad10f2f8b3dab958929b57eb3ff1fb2a5}{lsa}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 끝\ 각도}}
+\DoxyCodeLine{00018\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_lidar_scan_packet_a45d9e5894133150a20cdcd432df9dbd1}{checkSum}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 체크섬(매뉴얼의\ CS)}}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<LidarPoint>\ \mbox{\hyperlink{struct_lidar_scan_packet_acbfb20d4b6ba3df964d2040af980b5ae}{points}};\ \ \textcolor{comment}{//\ 파싱된\ 포인트\ 목록}}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lidar_data_parser}{LidarDataParser}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_lidar_data_parser_aaf12eaeb2e30d11a5fc647cf191285b7}{LidarDataParser}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_lidar_data_parser_a526fa47c299c0a49c9b55a8c7a1b6cf3}{\string~LidarDataParser}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ 단일\ 패킷(연속\ 스캔의\ 한\ 덩어리)을\ 파싱}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ 성공\ 시\ LidarScanPacket\ 구조체를\ 반환}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ 실패\ 시\ nullptr\ (또는\ std::optional\ 등)을\ 활용할\ 수도\ 있음}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lidar_data_parser_acef8fedb824532525f622d7222d5cb50}{parsePacket}}(\textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ data,\ \mbox{\hyperlink{struct_lidar_scan_packet}{LidarScanPacket}}\&\ outPacket);}
+\DoxyCodeLine{00031\ \};}
+
+\end{DoxyCode}

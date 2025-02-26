@@ -1,0 +1,128 @@
+\doxysection{logger.\+hpp}
+\hypertarget{logger_8hpp_source}{}\label{logger_8hpp_source}\index{include/logger.hpp@{include/logger.hpp}}
+\mbox{\hyperlink{logger_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_VL\_LOGGER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_VL\_LOGGER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <ctime>}\ \ \ \ \ \ \ \ \textcolor{comment}{//\ va\_list,\ va\_start,\ va\_end}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <cstdarg>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevl}{vl}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }utils\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }logger\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifndef\ COLOR}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \#define\ COLOFF\ \ "{}\(\backslash\)033[0m"{}\ \ \ \ \ \ }}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#define\ RED\ \ \ \ \ \ "{}\(\backslash\)033[0;31m"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#define\ GREEN\ \ \ \ "{}\(\backslash\)033[0;32m"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \#define\ BLUE\ \ \ \ \ "{}\(\backslash\)033[0;34m"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{LogLevel}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a96d64735749297f83000740aa959ef10}{LOG\_LEVEL\_SILENT}}\ =\ 0,}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}{LOG\_LEVEL\_FATAL}},}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b}{LOG\_LEVEL\_ERROR}},}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7}{LOG\_LEVEL\_WARNING}},}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}{LOG\_LEVEL\_INFO}},}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549}{LOG\_LEVEL\_DEBUG}},}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2}{LOG\_LEVEL\_VERBOSE}}}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{LogLevel}}\&\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c}{getGlobalLogLevel}}()}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{LogLevel}}\ glovalLogLevel\ =\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}{LOG\_LEVEL\_INFO}};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{return}\ glovalLogLevel;}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_abc308428395717883672be8a774bb9a1}{setLogLevel}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{LogLevel}}\ level)}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c}{getGlobalLogLevel}}()\ =\ level;}
+\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{LogLevel}}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a58aa98918f09b95c9974162fffe51b9e}{getLogLevel}}()}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c}{getGlobalLogLevel}}();}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ad4b515535ffde4bfdec3f08139d808f3}{getCurrentTimeString}}()}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ std::time\_t\ t\ =\ std::time(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{struct\ }tm\ *lt\ =\ std::localtime(\&t);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{char}\ buff[32];}
+\DoxyCodeLine{00061\ \ \ \ \ std::strftime(buff,\ \textcolor{keyword}{sizeof}(buff),\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}},\ lt);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{return}\ std::string(buff);}
+\DoxyCodeLine{00063\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{LogLevel}}\ level,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ line,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tag,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fmt,\ ...)}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{if}(level\ <\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a58aa98918f09b95c9974162fffe51b9e}{getLogLevel}}())\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ color\ =\ \mbox{\hyperlink{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331}{COLOFF}};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ levelName\ =\ \textcolor{stringliteral}{"{}UNKNOWN"{}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{switch}\ (level)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}{LOG\_LEVEL\_FATAL}}:\ \ \ \ \ \ \ color\ =\ \mbox{\hyperlink{logger_8hpp_a8d23feea868a983c8c2b661e1e16972f}{RED}};\ \ \ \ \ \ \ \ levelName\ =\ \textcolor{stringliteral}{"{}FATAL"{}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b}{LOG\_LEVEL\_ERROR}}:\ \ \ \ \ \ \ color\ =\ \mbox{\hyperlink{logger_8hpp_a8d23feea868a983c8c2b661e1e16972f}{RED}};\ \ \ \ \ \ \ \ levelName\ =\ \textcolor{stringliteral}{"{}ERROR"{}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7}{LOG\_LEVEL\_WARNING}}:\ \ \ \ \ color\ =\ \mbox{\hyperlink{logger_8hpp_a79d10e672abb49ad63eeaa8aaef57c38}{BLUE}};\ \ \ \ \ \ \ levelName\ =\ \textcolor{stringliteral}{"{}WARN"{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}{LOG\_LEVEL\_INFO}}:\ \ \ \ \ \ \ \ color\ =\ \mbox{\hyperlink{logger_8hpp_acfbc006ea433ad708fdee3e82996e721}{GREEN}};\ \ \ \ \ \ levelName\ =\ \textcolor{stringliteral}{"{}INFO"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549}{LOG\_LEVEL\_DEBUG}}:\ \ \ \ \ \ \ color\ =\ \mbox{\hyperlink{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331}{COLOFF}};\ \ \ \ \ levelName\ =\ \textcolor{stringliteral}{"{}DEBUG"{}};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2}{LOG\_LEVEL\_VERBOSE}}:\ \ \ \ \ color\ =\ \mbox{\hyperlink{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331}{COLOFF}};\ \ \ \ \ levelName\ =\ \textcolor{stringliteral}{"{}VERB"{}};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ va\_list\ args;}
+\DoxyCodeLine{00091\ \ \ \ \ va\_start(args,\ fmt);}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
+\DoxyCodeLine{00093\ \ \ \ \ std::vsnprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ fmt,\ args);}
+\DoxyCodeLine{00094\ \ \ \ \ va\_end(args);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ std::fprintf(\ \ \ stderr,\ \ \ \ \textcolor{stringliteral}{"{}\%s[\%s]\ \%s\ [\%s:\%d]\ [\%s]\ \%s\%s\(\backslash\)n"{}},}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ad4b515535ffde4bfdec3f08139d808f3}{getCurrentTimeString}}().c\_str(),}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levelName,}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file,}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (tag\ ?\ tag\ :\ \textcolor{stringliteral}{"{}\ "{}}),}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331}{COLOFF}}}
+\DoxyCodeLine{00105\ \ \ \ \ );}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{if}(level\ ==\ \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}{LOG\_LEVEL\_FATAL}})\ \{}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ VL\_LOG\_FATAL(tag,\ fmt,\ ...)\ \ \ \ \ vl::utils::logger::logMessage(vl::utils::logger::LOG\_LEVEL\_FATAL,\ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ VL\_LOG\_ERROR(tag,\ fmt,\ ...)\ \ \ \ \ vl::utils::logger::logMessage(vl::utils::logger::LOG\_LEVEL\_ERROR,\ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ VL\_LOG\_WARNING(tag,\ fmt,\ ...)\ \ \ vl::utils::logger::logMessage(vl::utils::logger::LOG\_LEVEL\_WARNING,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ VL\_LOG\_INFO(tag,\ fmt,\ ...)\ \ \ \ \ \ vl::utils::logger::logMessage(vl::utils::logger::LOG\_LEVEL\_INFO,\ \ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ VL\_LOG\_DEBUG(tag,\ fmt,\ ...)\ \ \ \ \ vl::utils::logger::logMessage(vl::utils::logger::LOG\_LEVEL\_DEBUG,\ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ VL\_LOG\_VERBOSE(tag,\ fmt,\ ...)\ \ \ vl::utils::logger::logMessage(vl::utils::logger::LOG\_LEVEL\_VERBOSE,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \}\ \textcolor{comment}{//\ namespace\ logger}}
+\DoxyCodeLine{00123\ \}\ \textcolor{comment}{//\ namespace\ utils}}
+\DoxyCodeLine{00124\ \}\ \textcolor{comment}{//\ namespace\ vl}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00127\ }
+
+\end{DoxyCode}

@@ -1,0 +1,183 @@
+\doxysection{vl\+::lidar Namespace Reference}
+\hypertarget{namespacevl_1_1lidar}{}\label{namespacevl_1_1lidar}\index{vl::lidar@{vl::lidar}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}}
+\begin{DoxyCompactList}\small\item\em A class that provides an abstract interface for control lidar. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller}{YDLidar\+Controller}}
+\begin{DoxyCompactList}\small\item\em A class that provides to control YDLidar Device. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder}{YDLidar\+Decoder}}
+\begin{DoxyCompactList}\small\item\em A Class that Decode YDLidar\+Response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}} $>$ \mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{Lidar\+Controller}}
+\begin{DoxyCompactList}\small\item\em A shared pointer to a \doxylink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{Header}}
+\begin{DoxyCompactList}\small\item\em Represents the byte header used for serial communication with the LIDAR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920}{Lidar\+Device}} \{ \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920a26cf821f1c9933e6200b43ced5dd7151}{YDLidar}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of supported LIDAR device types. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270}{YDLidar\+Scan\+Modes}} \{ \newline
+\mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a046fa991e71c0d1165c303acf8d81f43}{LIDAR\+\_\+\+START\+\_\+\+SCAN}} = 0x60
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270abac350945a5e19374517047450fabb80}{LIDAR\+\_\+\+STOP\+\_\+\+SCAN}} = 0x65
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a3870ad5f3b5771139131ae4e69860289}{LIDAR\+\_\+\+GET\+\_\+\+INFO}} = 0x90
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270aa546bd7df0658166389106e6aa14572b}{LIDAR\+\_\+\+GET\+\_\+\+HEALTH}} = 0x92
+, \newline
+\mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a5687f70355d5a736ad7a1e3687620e41}{LIDAR\+\_\+\+FREQ\+\_\+\+UP\+\_\+0\+\_\+1\+HZ}} = 0x09
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a26c95f6ab269e2c89168bcf2a5124d21}{LIDAR\+\_\+\+FREQ\+\_\+\+DOWN\+\_\+0\+\_\+1\+HZ}} = 0x0A
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a8575bfe9d1121c6bcf0b03d0aea0d645}{LIDAR\+\_\+\+FREQ\+\_\+\+UP\+\_\+1\+HZ}} = 0x0B
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a275e8289361e872b1fe3eec93c90cf3b}{LIDAR\+\_\+\+FREQ\+\_\+\+DOWN\+\_\+1\+HZ}} = 0x0C
+, \newline
+\mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a19d7213201d0c4c74e4425b3c8036e66}{LIDAR\+\_\+\+GET\+\_\+\+FREQ}} = 0x0D
+, \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a43a4bb1e8ca1840823fb7593aa8311bd}{LIDAR\+\_\+\+SOFT\+\_\+\+RESTART}} = 0x40
+ \}
+\item 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef}{YDLidar\+Response\+Mode}} \{ \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa101d8bc05ebfc787e4333df6dfaacacf}{RESPONSE\+\_\+\+CONTINUOUS}}
+, \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa7bf7f9bb28d927b1bd3ec95b99a1142f}{RESPONSE\+\_\+\+NO\+\_\+\+ANSWER}}
+, \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa62cf8256b33a7eb41062f0db61f762e7}{RESPONSE\+\_\+\+SINGLE\+\_\+\+RESPONSE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacevl_1_1lidar_a0e9cf2df74c7c266c1447bf8095adcf8}{decode}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}raw\+\_\+data, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Decode YDLidar Response. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacevl_1_1lidar_a0fc2b408ca98164f8e6fe06b5b326f60}{load\+Lidar}} (const \mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}} port, int flags)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}\index{vl::lidar@{vl::lidar}!Header@{Header}}
+\index{Header@{Header}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{Header}{Header}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5} 
+typedef std\+::vector$<$uint8\+\_\+t$>$ \mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{vl\+::lidar\+::\+Header}}}
+
+
+
+Represents the byte header used for serial communication with the LIDAR. 
+
+\Hypertarget{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}\index{vl::lidar@{vl::lidar}!LidarController@{LidarController}}
+\index{LidarController@{LidarController}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{LidarController}{LidarController}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef} 
+typedef std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}}$>$ \mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{vl\+::lidar\+::\+Lidar\+Controller}}}
+
+
+
+A shared pointer to a \doxylink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920}\index{vl::lidar@{vl::lidar}!LidarDevice@{LidarDevice}}
+\index{LidarDevice@{LidarDevice}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{LidarDevice}{LidarDevice}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920} 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920}{vl\+::lidar\+::\+Lidar\+Device}}}
+
+
+
+Enumeration of supported LIDAR device types. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{YDLidar@{YDLidar}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!YDLidar@{YDLidar}}}\Hypertarget{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920a26cf821f1c9933e6200b43ced5dd7151}\label{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920} 
+YDLidar&Bitmask representing the YDLidar device. Represents a YDLidar device. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef}\index{vl::lidar@{vl::lidar}!YDLidarResponseMode@{YDLidarResponseMode}}
+\index{YDLidarResponseMode@{YDLidarResponseMode}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{YDLidarResponseMode}{YDLidarResponseMode}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef} 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef}{vl\+::lidar\+::\+YDLidar\+Response\+Mode}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESPONSE\_CONTINUOUS@{RESPONSE\_CONTINUOUS}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!RESPONSE\_CONTINUOUS@{RESPONSE\_CONTINUOUS}}}\Hypertarget{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa101d8bc05ebfc787e4333df6dfaacacf}\label{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef} 
+RESPONSE\+\_\+\+CONTINUOUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESPONSE\_NO\_ANSWER@{RESPONSE\_NO\_ANSWER}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!RESPONSE\_NO\_ANSWER@{RESPONSE\_NO\_ANSWER}}}\Hypertarget{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa7bf7f9bb28d927b1bd3ec95b99a1142f}\label{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef} 
+RESPONSE\+\_\+\+NO\+\_\+\+ANSWER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESPONSE\_SINGLE\_RESPONSE@{RESPONSE\_SINGLE\_RESPONSE}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!RESPONSE\_SINGLE\_RESPONSE@{RESPONSE\_SINGLE\_RESPONSE}}}\Hypertarget{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa62cf8256b33a7eb41062f0db61f762e7}\label{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef} 
+RESPONSE\+\_\+\+SINGLE\+\_\+\+RESPONSE&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270}\index{vl::lidar@{vl::lidar}!YDLidarScanModes@{YDLidarScanModes}}
+\index{YDLidarScanModes@{YDLidarScanModes}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{YDLidarScanModes}{YDLidarScanModes}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270}{vl\+::lidar\+::\+YDLidar\+Scan\+Modes}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_START\_SCAN@{LIDAR\_START\_SCAN}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_START\_SCAN@{LIDAR\_START\_SCAN}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a046fa991e71c0d1165c303acf8d81f43}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+START\+\_\+\+SCAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_STOP\_SCAN@{LIDAR\_STOP\_SCAN}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_STOP\_SCAN@{LIDAR\_STOP\_SCAN}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270abac350945a5e19374517047450fabb80}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+STOP\+\_\+\+SCAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_GET\_INFO@{LIDAR\_GET\_INFO}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_GET\_INFO@{LIDAR\_GET\_INFO}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a3870ad5f3b5771139131ae4e69860289}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+GET\+\_\+\+INFO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_GET\_HEALTH@{LIDAR\_GET\_HEALTH}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_GET\_HEALTH@{LIDAR\_GET\_HEALTH}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270aa546bd7df0658166389106e6aa14572b}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+GET\+\_\+\+HEALTH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_FREQ\_UP\_0\_1HZ@{LIDAR\_FREQ\_UP\_0\_1HZ}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_FREQ\_UP\_0\_1HZ@{LIDAR\_FREQ\_UP\_0\_1HZ}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a5687f70355d5a736ad7a1e3687620e41}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+FREQ\+\_\+\+UP\+\_\+0\+\_\+1\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_FREQ\_DOWN\_0\_1HZ@{LIDAR\_FREQ\_DOWN\_0\_1HZ}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_FREQ\_DOWN\_0\_1HZ@{LIDAR\_FREQ\_DOWN\_0\_1HZ}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a26c95f6ab269e2c89168bcf2a5124d21}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+FREQ\+\_\+\+DOWN\+\_\+0\+\_\+1\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_FREQ\_UP\_1HZ@{LIDAR\_FREQ\_UP\_1HZ}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_FREQ\_UP\_1HZ@{LIDAR\_FREQ\_UP\_1HZ}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a8575bfe9d1121c6bcf0b03d0aea0d645}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+FREQ\+\_\+\+UP\+\_\+1\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_FREQ\_DOWN\_1HZ@{LIDAR\_FREQ\_DOWN\_1HZ}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_FREQ\_DOWN\_1HZ@{LIDAR\_FREQ\_DOWN\_1HZ}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a275e8289361e872b1fe3eec93c90cf3b}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+FREQ\+\_\+\+DOWN\+\_\+1\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_GET\_FREQ@{LIDAR\_GET\_FREQ}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_GET\_FREQ@{LIDAR\_GET\_FREQ}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a19d7213201d0c4c74e4425b3c8036e66}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+GET\+\_\+\+FREQ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIDAR\_SOFT\_RESTART@{LIDAR\_SOFT\_RESTART}!vl::lidar@{vl::lidar}}\index{vl::lidar@{vl::lidar}!LIDAR\_SOFT\_RESTART@{LIDAR\_SOFT\_RESTART}}}\Hypertarget{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a43a4bb1e8ca1840823fb7593aa8311bd}\label{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270} 
+LIDAR\+\_\+\+SOFT\+\_\+\+RESTART&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacevl_1_1lidar_a0e9cf2df74c7c266c1447bf8095adcf8}\index{vl::lidar@{vl::lidar}!decode@{decode}}
+\index{decode@{decode}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_a0e9cf2df74c7c266c1447bf8095adcf8} 
+void vl\+::lidar\+::decode (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{raw\+\_\+data}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Decode YDLidar Response. 
+
+\begin{DoxyNote}{Note}
+추후에 업캐스팅 클래스 만들어서 오버라이드 시켜야함, switch문도 수정 필요 
+\end{DoxyNote}
+\Hypertarget{namespacevl_1_1lidar_a0fc2b408ca98164f8e6fe06b5b326f60}\index{vl::lidar@{vl::lidar}!loadLidar@{loadLidar}}
+\index{loadLidar@{loadLidar}!vl::lidar@{vl::lidar}}
+\doxysubsubsection{\texorpdfstring{loadLidar()}{loadLidar()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1lidar_a0fc2b408ca98164f8e6fe06b5b326f60} 
+bool vl\+::lidar\+::load\+Lidar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}}}]{port}{, }\item[{int}]{flags}{}\end{DoxyParamCaption})}
+

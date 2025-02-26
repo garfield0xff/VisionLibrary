@@ -1,0 +1,97 @@
+\doxysection{vl\+::window\+\_\+io\+::Serial\+Window\+Backend Class Reference}
+\hypertarget{classvl_1_1window__io_1_1_serial_window_backend}{}\label{classvl_1_1window__io_1_1_serial_window_backend}\index{vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}}
+
+
+A class that control serial communication with device.  
+
+
+
+
+{\ttfamily \#include $<$window\+\_\+io.\+hpp$>$}
+
+Inheritance diagram for vl\+::window\+\_\+io\+::Serial\+Window\+Backend\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvl_1_1window__io_1_1_serial_window_backend}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvl_1_1window__io_1_1_serial_window_backend_ae96efc28da0dee3690b943e597d9aa10}{Serial\+Window\+Backend}} ()
+\item 
+\mbox{\hyperlink{classvl_1_1window__io_1_1_serial_window_backend_a56fe271b60d55af9b5ca80415656906c}{\texorpdfstring{$\sim$}{\string~}\+Serial\+Window\+Backend}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1window__io_1_1_serial_window_backend_aec1c1694c27b1947d13526fe7f7e022a}{init\+Termios}} (\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}} fd) override
+\begin{DoxyCompactList}\small\item\em initialize interface io window frame buffer \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1window__io_1_1_serial_window_backend_acb800a1fe0f2023c8c2b9f51e29d4f55}{set\+Serial8\+N1\+Mode}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend}{vl\+::window\+\_\+io\+::\+Window\+Backend}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_a99633e5e89b8884606a19268b17685e0}{Window\+Backend}} ()
+\item 
+\mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_a3f9e44c879b8bff0ff885e75c6f6bdc2}{\texorpdfstring{$\sim$}{\string~}\+Window\+Backend}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend}{vl\+::window\+\_\+io\+::\+Window\+Backend}}}
+\begin{DoxyCompactItemize}
+\item 
+struct termios \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_ad752c2edf8f3c2222b2bf3bf951726b0}{m\+\_\+tty}}
+\begin{DoxyCompactList}\small\item\em Struct termios to store option. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}} \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_a5068782cd6b0c75f3c1a59005b2f868a}{m\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Device File\+Descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that control serial communication with device. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvl_1_1window__io_1_1_serial_window_backend_ae96efc28da0dee3690b943e597d9aa10}\index{vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}!SerialWindowBackend@{SerialWindowBackend}}
+\index{SerialWindowBackend@{SerialWindowBackend}!vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}}
+\doxysubsubsection{\texorpdfstring{SerialWindowBackend()}{SerialWindowBackend()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_serial_window_backend_ae96efc28da0dee3690b943e597d9aa10} 
+vl\+::window\+\_\+io\+::\+Serial\+Window\+Backend\+::\+Serial\+Window\+Backend (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classvl_1_1window__io_1_1_serial_window_backend_a56fe271b60d55af9b5ca80415656906c}\index{vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}!````~SerialWindowBackend@{\texorpdfstring{$\sim$}{\string~}SerialWindowBackend}}
+\index{````~SerialWindowBackend@{\texorpdfstring{$\sim$}{\string~}SerialWindowBackend}!vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SerialWindowBackend()}{\string~SerialWindowBackend()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_serial_window_backend_a56fe271b60d55af9b5ca80415656906c} 
+vl\+::window\+\_\+io\+::\+Serial\+Window\+Backend\+::\texorpdfstring{$\sim$}{\string~}\+Serial\+Window\+Backend (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvl_1_1window__io_1_1_serial_window_backend_aec1c1694c27b1947d13526fe7f7e022a}\index{vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}!initTermios@{initTermios}}
+\index{initTermios@{initTermios}!vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}}
+\doxysubsubsection{\texorpdfstring{initTermios()}{initTermios()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_serial_window_backend_aec1c1694c27b1947d13526fe7f7e022a} 
+bool vl\+::window\+\_\+io\+::\+Serial\+Window\+Backend\+::init\+Termios (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}}}]{fd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+initialize interface io window frame buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & Device File\+Descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true is successfully set, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_ac9225e95a3a53534e5199938e63cc177}{vl\+::window\+\_\+io\+::\+Window\+Backend}}.
+
+\Hypertarget{classvl_1_1window__io_1_1_serial_window_backend_acb800a1fe0f2023c8c2b9f51e29d4f55}\index{vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}!setSerial8N1Mode@{setSerial8N1Mode}}
+\index{setSerial8N1Mode@{setSerial8N1Mode}!vl::window\_io::SerialWindowBackend@{vl::window\_io::SerialWindowBackend}}
+\doxysubsubsection{\texorpdfstring{setSerial8N1Mode()}{setSerial8N1Mode()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_serial_window_backend_acb800a1fe0f2023c8c2b9f51e29d4f55} 
+bool vl\+::window\+\_\+io\+::\+Serial\+Window\+Backend\+::set\+Serial8\+N1\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{window__io_8hpp}{window\+\_\+io.\+hpp}}\end{DoxyCompactItemize}

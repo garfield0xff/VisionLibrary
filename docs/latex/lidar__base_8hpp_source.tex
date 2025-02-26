@@ -1,0 +1,81 @@
+\doxysection{lidar\+\_\+base.\+hpp}
+\hypertarget{lidar__base_8hpp_source}{}\label{lidar__base_8hpp_source}\index{include/lidar\_base.hpp@{include/lidar\_base.hpp}}
+\mbox{\hyperlink{lidar__base_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_LIDAR\_BASE\_FMT\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_LIDAR\_BASE\_FMT\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{vlstd_8hpp}{vlstd.hpp}}>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <fcntl.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{window__io_8hpp}{window\_io.hpp}}>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{lidar__res_8hpp}{lidar\_res.hpp}}>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{logger_8hpp}{logger.hpp}}>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <memory>}\ \ \ \textcolor{comment}{//\ for\ std::shared\_ptr}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <atomic>}\ \ \ \textcolor{comment}{//\ for\ std::atomic}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \ \textcolor{comment}{//\ for\ std::mutex}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevl}{vl}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }lidar\ }
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{BaseLidarController}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ std::shared\_ptr<BaseLidarController>\ \mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{LidarController}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ std::vector<uint8\_t>\ \mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{Header}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920}{LidarDevice}}\ }
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920a26cf821f1c9933e6200b43ced5dd7151}{YDLidar}}\ =\ 1\ <<\ 0,\ \ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{BaseLidarController}}}
+\DoxyCodeLine{00064\ \{}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_ad94adb6aa8693455f2dda2236ddfb24d}{BaseLidarController}}()\ \{\};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a78a5f338019c64f998d16f8e07d86a7a}{\string~BaseLidarController}}()\ \{\};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a2a44cee2adfe4aa9c3495259bbf8564b}{setPort}}(\mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}}\ port);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_aefbf9ed7cdf0c4bffce1274f7d5c12d3}{startScan}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_af22c6d03e8d756efbf72cd1a3ff0f011}{stopScan}}();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{LidarController}}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_aba05b69d3b32ae0f0ebb157e1f2d4eb6}{newController}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a5638bb817fe56d67a70aa42aae32bdcf}{m\_port}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{namespacevl_a257869c40f71c7e3d071fe3e1ffe4c6c}{Bps}}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a7360d2d20e91034879eb139722840422}{m\_buadrate}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{FileDescriptor}}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a1a34b920f980945415d2926155eeee27}{m\_fd}};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a599070c820a7457e4e22fe70b4f22649}{m\_timeoutMS}};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a39a00ae15968b423cb8f461c3610b155}{m\_connected}};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_ab30098a0c714b71ec7fc2120e91ebfbe}{sendSerialHeader}}(\mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{Header}}\ header)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a514eb764334d0d4b9bc80c2d68bd4dea}{printSerialLog}}(\textcolor{keywordtype}{int}\ flag)\ \textcolor{keyword}{const}\ =\ 0;\ \textcolor{comment}{//\ Todo:\ Implement\ in\ derived\ LIDAR\ modules}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00146\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a8bae19f526c39842c0d0678bc6a55a7d}{m\_isScanning}};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00151\ \ \ \ \ std::thread\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_adbc56a614f986a3708eaa44e869dca3c}{m\_scanThread}};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00156\ \ \ \ \ std::mutex\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a2aa17133170ecad6be76eb6f3b0652cf}{m\_mutex}};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \};\ \textcolor{comment}{//\ class\ BaseLidarController}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \}\ \textcolor{comment}{//\ namespace\ lidar}}
+\DoxyCodeLine{00161\ \}\ \textcolor{comment}{//\ namespace\ vl}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_LIDAR\_BASE\_FMT\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,11 @@
+# ninja log v6
+3	261	1740578722567905632	CMakeFiles/VL1.dir/src/lidar_res.cpp.o	a3fea100fce13d06
+3	110	1740578722568144591	/Users/gyujinkim/Desktop/Github/VisionLibrary/build/CMakeFiles/doc	fb01aa4d0620b20e
+3	474	1740578722568025966	CMakeFiles/VL1.dir/src/lidar_tminiplus.cpp.o	1b0b9ac1feed649a
+2	442	1740578722567264711	CMakeFiles/VL1.dir/src/main.cpp.o	9c46a14e9bcd63ae
+3	383	1740578722567785589	CMakeFiles/VL1.dir/src/lidar_base.cpp.o	17bd6709159d3535
+474	506	1740578723039406533	VL1	94b49120704f08b3
+3	110	1740578722568144591	CMakeFiles/doc	fb01aa4d0620b20e
+3	325	1740578722567665338	CMakeFiles/VL1.dir/src/window_io.cpp.o	1d49de41a4665155
+3	372	1740578722567526504	CMakeFiles/VL1.dir/src/loadsave.cpp.o	59e7cbac0bfead2c
+1	5	1740578722496932332	clean	1f0117926fe85a19

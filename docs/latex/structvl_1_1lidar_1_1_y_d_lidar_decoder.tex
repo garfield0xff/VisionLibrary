@@ -1,0 +1,74 @@
+\doxysection{vl\+::lidar\+::YDLidar\+Decoder Struct Reference}
+\hypertarget{structvl_1_1lidar_1_1_y_d_lidar_decoder}{}\label{structvl_1_1lidar_1_1_y_d_lidar_decoder}\index{vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}}
+
+
+A Class that Decode YDLidar\+Response.  
+
+
+
+
+{\ttfamily \#include $<$lidar\+\_\+res.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response}{Response}}
+\begin{DoxyCompactList}\small\item\em A data structure to store lidar response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_a15881c3db5d5bbefb01f5c6e17b7ce6c}{packet\+\_\+header}}
+\begin{DoxyCompactList}\small\item\em PH -\/ 0x55\+AA Packet Header. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_ae8caa18765ae683779bb26d9ded9bed5}{packet\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em CT -\/ Scanning Frequency \& package type. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_aee6cd5b24bf849e3c3db3154b179b949}{sample\+\_\+count}}
+\begin{DoxyCompactList}\small\item\em LSN -\/ Sample Count. \end{DoxyCompactList}\item 
+union \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response}{vl\+::lidar\+::\+YDLidar\+Decoder\+::\+Response}} \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_aef35fed2f85954fbfcaec169d9069bb3}{data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Class that Decode YDLidar\+Response. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structvl_1_1lidar_1_1_y_d_lidar_decoder_aef35fed2f85954fbfcaec169d9069bb3}\index{vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}!data@{data}}
+\index{data@{data}!vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{structvl_1_1lidar_1_1_y_d_lidar_decoder_aef35fed2f85954fbfcaec169d9069bb3} 
+union \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response}{vl\+::lidar\+::\+YDLidar\+Decoder\+::\+Response}} vl\+::lidar\+::\+YDLidar\+Decoder\+::data}
+
+\Hypertarget{structvl_1_1lidar_1_1_y_d_lidar_decoder_a15881c3db5d5bbefb01f5c6e17b7ce6c}\index{vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}!packet\_header@{packet\_header}}
+\index{packet\_header@{packet\_header}!vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}}
+\doxysubsubsection{\texorpdfstring{packet\_header}{packet\_header}}
+{\footnotesize\ttfamily \label{structvl_1_1lidar_1_1_y_d_lidar_decoder_a15881c3db5d5bbefb01f5c6e17b7ce6c} 
+uint16\+\_\+t vl\+::lidar\+::\+YDLidar\+Decoder\+::packet\+\_\+header}
+
+
+
+PH -\/ 0x55\+AA Packet Header. 
+
+\Hypertarget{structvl_1_1lidar_1_1_y_d_lidar_decoder_ae8caa18765ae683779bb26d9ded9bed5}\index{vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}!packet\_type@{packet\_type}}
+\index{packet\_type@{packet\_type}!vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}}
+\doxysubsubsection{\texorpdfstring{packet\_type}{packet\_type}}
+{\footnotesize\ttfamily \label{structvl_1_1lidar_1_1_y_d_lidar_decoder_ae8caa18765ae683779bb26d9ded9bed5} 
+uint8\+\_\+t vl\+::lidar\+::\+YDLidar\+Decoder\+::packet\+\_\+type}
+
+
+
+CT -\/ Scanning Frequency \& package type. 
+
+\Hypertarget{structvl_1_1lidar_1_1_y_d_lidar_decoder_aee6cd5b24bf849e3c3db3154b179b949}\index{vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}!sample\_count@{sample\_count}}
+\index{sample\_count@{sample\_count}!vl::lidar::YDLidarDecoder@{vl::lidar::YDLidarDecoder}}
+\doxysubsubsection{\texorpdfstring{sample\_count}{sample\_count}}
+{\footnotesize\ttfamily \label{structvl_1_1lidar_1_1_y_d_lidar_decoder_aee6cd5b24bf849e3c3db3154b179b949} 
+uint8\+\_\+t vl\+::lidar\+::\+YDLidar\+Decoder\+::sample\+\_\+count}
+
+
+
+LSN -\/ Sample Count. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{lidar__res_8hpp}{lidar\+\_\+res.\+hpp}}\end{DoxyCompactItemize}

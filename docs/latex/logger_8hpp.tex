@@ -1,0 +1,170 @@
+\doxysection{include/logger.hpp File Reference}
+\hypertarget{logger_8hpp}{}\label{logger_8hpp}\index{include/logger.hpp@{include/logger.hpp}}
+
+
+~\newline
+  
+
+
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$cstdarg$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevl}{vl}}
+\item 
+namespace \mbox{\hyperlink{namespacevl_1_1utils}{vl\+::utils}}
+\item 
+namespace \mbox{\hyperlink{namespacevl_1_1utils_1_1logger}{vl\+::utils\+::logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331}{COLOFF}}~"{}\textbackslash{}033\mbox{[}0m"{}
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_a8d23feea868a983c8c2b661e1e16972f}{RED}}~"{}\textbackslash{}033\mbox{[}0;31m"{}
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_acfbc006ea433ad708fdee3e82996e721}{GREEN}}~"{}\textbackslash{}033\mbox{[}0;32m"{}
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_a79d10e672abb49ad63eeaa8aaef57c38}{BLUE}}~"{}\textbackslash{}033\mbox{[}0;34m"{}
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_a47438c03afcabfca6d26221e8443b507}{VL\+\_\+\+LOG\+\_\+\+FATAL}}(tag,  fmt, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_ac426d05247c6a69a83d32cfca2fc5580}{VL\+\_\+\+LOG\+\_\+\+ERROR}}(tag,  fmt, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_aec97abbc6df2846e056544f0f7d3e806}{VL\+\_\+\+LOG\+\_\+\+WARNING}}(tag,  fmt, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_a8b8cfbaa11a745a25eecefe07463423a}{VL\+\_\+\+LOG\+\_\+\+INFO}}(tag,  fmt, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_a1543a40db843c10939cc833674cdf93b}{VL\+\_\+\+LOG\+\_\+\+DEBUG}}(tag,  fmt, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8hpp_ae333d8ad8bacac76c0678d734b2162a6}{VL\+\_\+\+LOG\+\_\+\+VERBOSE}}(tag,  fmt, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{vl\+::utils\+::logger\+::\+Log\+Level}} \{ \newline
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a96d64735749297f83000740aa959ef10}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+SILENT}} = 0
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+FATAL}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+ERROR}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+WARNING}}
+, \newline
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+INFO}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+DEBUG}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2}{vl\+::utils\+::logger\+::\+LOG\+\_\+\+LEVEL\+\_\+\+VERBOSE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} \& \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c}{vl\+::utils\+::logger\+::get\+Global\+Log\+Level}} ()
+\item 
+void \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_abc308428395717883672be8a774bb9a1}{vl\+::utils\+::logger\+::set\+Log\+Level}} (\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} level)
+\item 
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a58aa98918f09b95c9974162fffe51b9e}{vl\+::utils\+::logger\+::get\+Log\+Level}} ()
+\item 
+std\+::string \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ad4b515535ffde4bfdec3f08139d808f3}{vl\+::utils\+::logger\+::get\+Current\+Time\+String}} ()
+\item 
+void \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl\+::utils\+::logger\+::log\+Message}} (\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} level, const char \texorpdfstring{$\ast$}{*}file, int line, const char \texorpdfstring{$\ast$}{*}tag, const char \texorpdfstring{$\ast$}{*}fmt,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+~\newline
+ 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{logger_8hpp_a79d10e672abb49ad63eeaa8aaef57c38}\index{logger.hpp@{logger.hpp}!BLUE@{BLUE}}
+\index{BLUE@{BLUE}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{BLUE}{BLUE}}
+{\footnotesize\ttfamily \label{logger_8hpp_a79d10e672abb49ad63eeaa8aaef57c38} 
+\#define BLUE~"{}\textbackslash{}033\mbox{[}0;34m"{}}
+
+\Hypertarget{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331}\index{logger.hpp@{logger.hpp}!COLOFF@{COLOFF}}
+\index{COLOFF@{COLOFF}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{COLOFF}{COLOFF}}
+{\footnotesize\ttfamily \label{logger_8hpp_a8ef8a68ef09be2aba2b0c4c2d09fb331} 
+\#define COLOFF~"{}\textbackslash{}033\mbox{[}0m"{}}
+
+\Hypertarget{logger_8hpp_acfbc006ea433ad708fdee3e82996e721}\index{logger.hpp@{logger.hpp}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \label{logger_8hpp_acfbc006ea433ad708fdee3e82996e721} 
+\#define GREEN~"{}\textbackslash{}033\mbox{[}0;32m"{}}
+
+\Hypertarget{logger_8hpp_a8d23feea868a983c8c2b661e1e16972f}\index{logger.hpp@{logger.hpp}!RED@{RED}}
+\index{RED@{RED}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \label{logger_8hpp_a8d23feea868a983c8c2b661e1e16972f} 
+\#define RED~"{}\textbackslash{}033\mbox{[}0;31m"{}}
+
+\Hypertarget{logger_8hpp_a1543a40db843c10939cc833674cdf93b}\index{logger.hpp@{logger.hpp}!VL\_LOG\_DEBUG@{VL\_LOG\_DEBUG}}
+\index{VL\_LOG\_DEBUG@{VL\_LOG\_DEBUG}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{VL\_LOG\_DEBUG}{VL\_LOG\_DEBUG}}
+{\footnotesize\ttfamily \label{logger_8hpp_a1543a40db843c10939cc833674cdf93b} 
+\#define VL\+\_\+\+LOG\+\_\+\+DEBUG(\begin{DoxyParamCaption}\item[{}]{tag}{, }\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl::utils::logger::logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549}{vl::utils::logger::LOG\_LEVEL\_DEBUG}},\ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}
+
+\end{DoxyCode}
+\Hypertarget{logger_8hpp_ac426d05247c6a69a83d32cfca2fc5580}\index{logger.hpp@{logger.hpp}!VL\_LOG\_ERROR@{VL\_LOG\_ERROR}}
+\index{VL\_LOG\_ERROR@{VL\_LOG\_ERROR}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{VL\_LOG\_ERROR}{VL\_LOG\_ERROR}}
+{\footnotesize\ttfamily \label{logger_8hpp_ac426d05247c6a69a83d32cfca2fc5580} 
+\#define VL\+\_\+\+LOG\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{tag}{, }\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl::utils::logger::logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b}{vl::utils::logger::LOG\_LEVEL\_ERROR}},\ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}
+
+\end{DoxyCode}
+\Hypertarget{logger_8hpp_a47438c03afcabfca6d26221e8443b507}\index{logger.hpp@{logger.hpp}!VL\_LOG\_FATAL@{VL\_LOG\_FATAL}}
+\index{VL\_LOG\_FATAL@{VL\_LOG\_FATAL}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{VL\_LOG\_FATAL}{VL\_LOG\_FATAL}}
+{\footnotesize\ttfamily \label{logger_8hpp_a47438c03afcabfca6d26221e8443b507} 
+\#define VL\+\_\+\+LOG\+\_\+\+FATAL(\begin{DoxyParamCaption}\item[{}]{tag}{, }\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl::utils::logger::logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}{vl::utils::logger::LOG\_LEVEL\_FATAL}},\ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}
+
+\end{DoxyCode}
+\Hypertarget{logger_8hpp_a8b8cfbaa11a745a25eecefe07463423a}\index{logger.hpp@{logger.hpp}!VL\_LOG\_INFO@{VL\_LOG\_INFO}}
+\index{VL\_LOG\_INFO@{VL\_LOG\_INFO}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{VL\_LOG\_INFO}{VL\_LOG\_INFO}}
+{\footnotesize\ttfamily \label{logger_8hpp_a8b8cfbaa11a745a25eecefe07463423a} 
+\#define VL\+\_\+\+LOG\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{tag}{, }\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl::utils::logger::logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}{vl::utils::logger::LOG\_LEVEL\_INFO}},\ \ \ \ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}
+
+\end{DoxyCode}
+\Hypertarget{logger_8hpp_ae333d8ad8bacac76c0678d734b2162a6}\index{logger.hpp@{logger.hpp}!VL\_LOG\_VERBOSE@{VL\_LOG\_VERBOSE}}
+\index{VL\_LOG\_VERBOSE@{VL\_LOG\_VERBOSE}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{VL\_LOG\_VERBOSE}{VL\_LOG\_VERBOSE}}
+{\footnotesize\ttfamily \label{logger_8hpp_ae333d8ad8bacac76c0678d734b2162a6} 
+\#define VL\+\_\+\+LOG\+\_\+\+VERBOSE(\begin{DoxyParamCaption}\item[{}]{tag}{, }\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl::utils::logger::logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2}{vl::utils::logger::LOG\_LEVEL\_VERBOSE}},\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}
+
+\end{DoxyCode}
+\Hypertarget{logger_8hpp_aec97abbc6df2846e056544f0f7d3e806}\index{logger.hpp@{logger.hpp}!VL\_LOG\_WARNING@{VL\_LOG\_WARNING}}
+\index{VL\_LOG\_WARNING@{VL\_LOG\_WARNING}!logger.hpp@{logger.hpp}}
+\doxysubsubsection{\texorpdfstring{VL\_LOG\_WARNING}{VL\_LOG\_WARNING}}
+{\footnotesize\ttfamily \label{logger_8hpp_aec97abbc6df2846e056544f0f7d3e806} 
+\#define VL\+\_\+\+LOG\+\_\+\+WARNING(\begin{DoxyParamCaption}\item[{}]{tag}{, }\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{vl::utils::logger::logMessage}}(\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7}{vl::utils::logger::LOG\_LEVEL\_WARNING}},\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ tag,\ fmt,\ \#\#\_\_VA\_ARGS\_\_\ \ );}
+
+\end{DoxyCode}

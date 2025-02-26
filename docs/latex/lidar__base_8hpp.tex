@@ -1,0 +1,49 @@
+\doxysection{include/lidar\+\_\+base.hpp File Reference}
+\hypertarget{lidar__base_8hpp}{}\label{lidar__base_8hpp}\index{include/lidar\_base.hpp@{include/lidar\_base.hpp}}
+
+
+Defines the Base\+Lidar\+Controller class for controlling various LIDAR devices.  
+
+
+{\ttfamily \#include $<$vlstd.\+hpp$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$window\+\_\+io.\+hpp$>$}\newline
+{\ttfamily \#include $<$lidar\+\_\+res.\+hpp$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$logger.\+hpp$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}
+\begin{DoxyCompactList}\small\item\em A class that provides an abstract interface for control lidar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevl}{vl}}
+\item 
+namespace \mbox{\hyperlink{namespacevl_1_1lidar}{vl\+::lidar}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}} $>$ \mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{vl\+::lidar\+::\+Lidar\+Controller}}
+\begin{DoxyCompactList}\small\item\em A shared pointer to a \doxylink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{vl\+::lidar\+::\+Header}}
+\begin{DoxyCompactList}\small\item\em Represents the byte header used for serial communication with the LIDAR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920}{vl\+::lidar\+::\+Lidar\+Device}} \{ \mbox{\hyperlink{namespacevl_1_1lidar_a282cbc923dfb6895c0c888e7daa68920a26cf821f1c9933e6200b43ced5dd7151}{vl\+::lidar\+::\+YDLidar}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of supported LIDAR device types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the Base\+Lidar\+Controller class for controlling various LIDAR devices. 
+
+This file declares the Base\+Lidar\+Controller class and related types/enumerations, providing basic methods to start, stop, and manage communication with LIDAR sensors. 

@@ -1,0 +1,101 @@
+\doxysection{vl\+::utils\+::logger Namespace Reference}
+\hypertarget{namespacevl_1_1utils_1_1logger}{}\label{namespacevl_1_1utils_1_1logger}\index{vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} \{ \newline
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a96d64735749297f83000740aa959ef10}{LOG\+\_\+\+LEVEL\+\_\+\+SILENT}} = 0
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}{LOG\+\_\+\+LEVEL\+\_\+\+FATAL}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b}{LOG\+\_\+\+LEVEL\+\_\+\+ERROR}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7}{LOG\+\_\+\+LEVEL\+\_\+\+WARNING}}
+, \newline
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}{LOG\+\_\+\+LEVEL\+\_\+\+INFO}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549}{LOG\+\_\+\+LEVEL\+\_\+\+DEBUG}}
+, \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2}{LOG\+\_\+\+LEVEL\+\_\+\+VERBOSE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} \& \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c}{get\+Global\+Log\+Level}} ()
+\item 
+void \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_abc308428395717883672be8a774bb9a1}{set\+Log\+Level}} (\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} level)
+\item 
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a58aa98918f09b95c9974162fffe51b9e}{get\+Log\+Level}} ()
+\item 
+std\+::string \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ad4b515535ffde4bfdec3f08139d808f3}{get\+Current\+Time\+String}} ()
+\item 
+void \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}{log\+Message}} (\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} level, const char \texorpdfstring{$\ast$}{*}file, int line, const char \texorpdfstring{$\ast$}{*}tag, const char \texorpdfstring{$\ast$}{*}fmt,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}\index{vl::utils::logger@{vl::utils::logger}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily \label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+enum \mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{vl\+::utils\+::logger\+::\+Log\+Level}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_SILENT@{LOG\_LEVEL\_SILENT}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_SILENT@{LOG\_LEVEL\_SILENT}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a96d64735749297f83000740aa959ef10}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+SILENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_FATAL@{LOG\_LEVEL\_FATAL}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_FATAL@{LOG\_LEVEL\_FATAL}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+FATAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_ERROR@{LOG\_LEVEL\_ERROR}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_ERROR@{LOG\_LEVEL\_ERROR}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_WARNING@{LOG\_LEVEL\_WARNING}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_WARNING@{LOG\_LEVEL\_WARNING}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+WARNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_INFO@{LOG\_LEVEL\_INFO}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_INFO@{LOG\_LEVEL\_INFO}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+INFO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_DEBUG@{LOG\_LEVEL\_DEBUG}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_DEBUG@{LOG\_LEVEL\_DEBUG}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+DEBUG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_LEVEL\_VERBOSE@{LOG\_LEVEL\_VERBOSE}!vl::utils::logger@{vl::utils::logger}}\index{vl::utils::logger@{vl::utils::logger}!LOG\_LEVEL\_VERBOSE@{LOG\_LEVEL\_VERBOSE}}}\Hypertarget{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2}\label{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831} 
+LOG\+\_\+\+LEVEL\+\_\+\+VERBOSE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacevl_1_1utils_1_1logger_ad4b515535ffde4bfdec3f08139d808f3}\index{vl::utils::logger@{vl::utils::logger}!getCurrentTimeString@{getCurrentTimeString}}
+\index{getCurrentTimeString@{getCurrentTimeString}!vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection{\texorpdfstring{getCurrentTimeString()}{getCurrentTimeString()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1utils_1_1logger_ad4b515535ffde4bfdec3f08139d808f3} 
+std\+::string vl\+::utils\+::logger\+::get\+Current\+Time\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c}\index{vl::utils::logger@{vl::utils::logger}!getGlobalLogLevel@{getGlobalLogLevel}}
+\index{getGlobalLogLevel@{getGlobalLogLevel}!vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection{\texorpdfstring{getGlobalLogLevel()}{getGlobalLogLevel()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1utils_1_1logger_afcfb61ad9db3a76d3554c17475782d5c} 
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} \& vl\+::utils\+::logger\+::get\+Global\+Log\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacevl_1_1utils_1_1logger_a58aa98918f09b95c9974162fffe51b9e}\index{vl::utils::logger@{vl::utils::logger}!getLogLevel@{getLogLevel}}
+\index{getLogLevel@{getLogLevel}!vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection{\texorpdfstring{getLogLevel()}{getLogLevel()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1utils_1_1logger_a58aa98918f09b95c9974162fffe51b9e} 
+\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}} vl\+::utils\+::logger\+::get\+Log\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6}\index{vl::utils::logger@{vl::utils::logger}!logMessage@{logMessage}}
+\index{logMessage@{logMessage}!vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection{\texorpdfstring{logMessage()}{logMessage()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1utils_1_1logger_ac160e64047f28aea8336d203f50b70f6} 
+void vl\+::utils\+::logger\+::log\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}}}]{level}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{int}]{line}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{tag}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{fmt}{, }\item[{}]{...}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacevl_1_1utils_1_1logger_abc308428395717883672be8a774bb9a1}\index{vl::utils::logger@{vl::utils::logger}!setLogLevel@{setLogLevel}}
+\index{setLogLevel@{setLogLevel}!vl::utils::logger@{vl::utils::logger}}
+\doxysubsubsection{\texorpdfstring{setLogLevel()}{setLogLevel()}}
+{\footnotesize\ttfamily \label{namespacevl_1_1utils_1_1logger_abc308428395717883672be8a774bb9a1} 
+void vl\+::utils\+::logger\+::set\+Log\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevl_1_1utils_1_1logger_a3d8e53bcfc0bd1f1d2a44b6b4b26b831}{Log\+Level}}}]{level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

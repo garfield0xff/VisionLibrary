@@ -1,0 +1,106 @@
+\doxysection{vl\+::window\+\_\+io\+::Window\+Backend Class Reference}
+\hypertarget{classvl_1_1window__io_1_1_window_backend}{}\label{classvl_1_1window__io_1_1_window_backend}\index{vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}}
+
+
+A class that control io interface.  
+
+
+
+
+{\ttfamily \#include $<$window\+\_\+io.\+hpp$>$}
+
+Inheritance diagram for vl\+::window\+\_\+io\+::Window\+Backend\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvl_1_1window__io_1_1_window_backend}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_a99633e5e89b8884606a19268b17685e0}{Window\+Backend}} ()
+\item 
+\mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_a3f9e44c879b8bff0ff885e75c6f6bdc2}{\texorpdfstring{$\sim$}{\string~}\+Window\+Backend}} ()
+\item 
+virtual bool \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_ac9225e95a3a53534e5199938e63cc177}{init\+Termios}} (\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}} fd)=0
+\begin{DoxyCompactList}\small\item\em initialize interface io window frame buffer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct termios \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_ad752c2edf8f3c2222b2bf3bf951726b0}{m\+\_\+tty}}
+\begin{DoxyCompactList}\small\item\em Struct termios to store option. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}} \mbox{\hyperlink{classvl_1_1window__io_1_1_window_backend_a5068782cd6b0c75f3c1a59005b2f868a}{m\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Device File\+Descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that control io interface. 
+
+The \doxylink{classvl_1_1window__io_1_1_window_backend}{Window\+Backend} class provides to control io interface It defines to control file\+Descriptor and set to communicate with device 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvl_1_1window__io_1_1_window_backend_a99633e5e89b8884606a19268b17685e0}\index{vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}!WindowBackend@{WindowBackend}}
+\index{WindowBackend@{WindowBackend}!vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}}
+\doxysubsubsection{\texorpdfstring{WindowBackend()}{WindowBackend()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_window_backend_a99633e5e89b8884606a19268b17685e0} 
+vl\+::window\+\_\+io\+::\+Window\+Backend\+::\+Window\+Backend (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1window__io_1_1_window_backend_a3f9e44c879b8bff0ff885e75c6f6bdc2}\index{vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}!````~WindowBackend@{\texorpdfstring{$\sim$}{\string~}WindowBackend}}
+\index{````~WindowBackend@{\texorpdfstring{$\sim$}{\string~}WindowBackend}!vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}WindowBackend()}{\string~WindowBackend()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_window_backend_a3f9e44c879b8bff0ff885e75c6f6bdc2} 
+vl\+::window\+\_\+io\+::\+Window\+Backend\+::\texorpdfstring{$\sim$}{\string~}\+Window\+Backend (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvl_1_1window__io_1_1_window_backend_ac9225e95a3a53534e5199938e63cc177}\index{vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}!initTermios@{initTermios}}
+\index{initTermios@{initTermios}!vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}}
+\doxysubsubsection{\texorpdfstring{initTermios()}{initTermios()}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_window_backend_ac9225e95a3a53534e5199938e63cc177} 
+virtual bool vl\+::window\+\_\+io\+::\+Window\+Backend\+::init\+Termios (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}}}]{fd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+initialize interface io window frame buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & Device File\+Descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true is successfully set, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classvl_1_1window__io_1_1_serial_window_backend_aec1c1694c27b1947d13526fe7f7e022a}{vl\+::window\+\_\+io\+::\+Serial\+Window\+Backend}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvl_1_1window__io_1_1_window_backend_a5068782cd6b0c75f3c1a59005b2f868a}\index{vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}!m\_fd@{m\_fd}}
+\index{m\_fd@{m\_fd}!vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}}
+\doxysubsubsection{\texorpdfstring{m\_fd}{m\_fd}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_window_backend_a5068782cd6b0c75f3c1a59005b2f868a} 
+\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}} vl\+::window\+\_\+io\+::\+Window\+Backend\+::m\+\_\+fd\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Device File\+Descriptor. 
+
+\Hypertarget{classvl_1_1window__io_1_1_window_backend_ad752c2edf8f3c2222b2bf3bf951726b0}\index{vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}!m\_tty@{m\_tty}}
+\index{m\_tty@{m\_tty}!vl::window\_io::WindowBackend@{vl::window\_io::WindowBackend}}
+\doxysubsubsection{\texorpdfstring{m\_tty}{m\_tty}}
+{\footnotesize\ttfamily \label{classvl_1_1window__io_1_1_window_backend_ad752c2edf8f3c2222b2bf3bf951726b0} 
+struct termios vl\+::window\+\_\+io\+::\+Window\+Backend\+::m\+\_\+tty\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Struct termios to store option. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{window__io_8hpp}{window\+\_\+io.\+hpp}}\end{DoxyCompactItemize}

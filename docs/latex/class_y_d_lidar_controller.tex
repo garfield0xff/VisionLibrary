@@ -1,0 +1,100 @@
+\doxysection{YDLidar\+Controller Class Reference}
+\hypertarget{class_y_d_lidar_controller}{}\label{class_y_d_lidar_controller}\index{YDLidarController@{YDLidarController}}
+
+
+{\ttfamily \#include $<$YDLidar\+Controller.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_d_lidar_controller_a934a7ed36e8b751f25c6a0b8ab814d9f}{YDLidar\+Controller}} (const std\+::string \&port, unsigned long baudrate=115200, unsigned int timeout\+Ms=1000)
+\item 
+\mbox{\hyperlink{class_y_d_lidar_controller_a2d1c67aecbb5b70ffaf574df16473763}{\texorpdfstring{$\sim$}{\string~}\+YDLidar\+Controller}} ()
+\item 
+bool \mbox{\hyperlink{class_y_d_lidar_controller_ae3215cb327965e19776ec8d808e74f69}{connect}} ()
+\item 
+void \mbox{\hyperlink{class_y_d_lidar_controller_a5f71652b5b7765331fedaed0de2e4e7d}{disconnect}} ()
+\item 
+void \mbox{\hyperlink{class_y_d_lidar_controller_a9050197073b7b98426775860a30fd500}{start\+Scan}} ()
+\item 
+void \mbox{\hyperlink{class_y_d_lidar_controller_a2a0e72a88f4d13d7d8521fa95ff32f3d}{reset\+Scan}} ()
+\item 
+void \mbox{\hyperlink{class_y_d_lidar_controller_acffd369c4d07a5977ad4267fed4ac080}{stop\+Scan}} ()
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{class_y_d_lidar_controller_ae5251c8e2246391793c3c4f716777e90}{get\+Device\+Info}} ()
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{class_y_d_lidar_controller_a36d1c84dc7b037a1eb8b16b8536c6e9a}{read\+Response}} (size\+\_\+t size)
+\item 
+void \mbox{\hyperlink{class_y_d_lidar_controller_ae4e127741401b29d5a602a58a06c8f70}{send\+Command}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&cmd)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_y_d_lidar_controller_a934a7ed36e8b751f25c6a0b8ab814d9f}\index{YDLidarController@{YDLidarController}!YDLidarController@{YDLidarController}}
+\index{YDLidarController@{YDLidarController}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{YDLidarController()}{YDLidarController()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_a934a7ed36e8b751f25c6a0b8ab814d9f} 
+YDLidar\+Controller\+::\+YDLidar\+Controller (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{port}{, }\item[{unsigned long}]{baudrate}{ = {\ttfamily 115200}, }\item[{unsigned int}]{timeout\+Ms}{ = {\ttfamily 1000}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\Hypertarget{class_y_d_lidar_controller_a2d1c67aecbb5b70ffaf574df16473763}\index{YDLidarController@{YDLidarController}!````~YDLidarController@{\texorpdfstring{$\sim$}{\string~}YDLidarController}}
+\index{````~YDLidarController@{\texorpdfstring{$\sim$}{\string~}YDLidarController}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}YDLidarController()}{\string~YDLidarController()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_a2d1c67aecbb5b70ffaf574df16473763} 
+YDLidar\+Controller\+::\texorpdfstring{$\sim$}{\string~}\+YDLidar\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_y_d_lidar_controller_ae3215cb327965e19776ec8d808e74f69}\index{YDLidarController@{YDLidarController}!connect@{connect}}
+\index{connect@{connect}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_ae3215cb327965e19776ec8d808e74f69} 
+bool YDLidar\+Controller\+::connect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_a5f71652b5b7765331fedaed0de2e4e7d}\index{YDLidarController@{YDLidarController}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_a5f71652b5b7765331fedaed0de2e4e7d} 
+void YDLidar\+Controller\+::disconnect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_ae5251c8e2246391793c3c4f716777e90}\index{YDLidarController@{YDLidarController}!getDeviceInfo@{getDeviceInfo}}
+\index{getDeviceInfo@{getDeviceInfo}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{getDeviceInfo()}{getDeviceInfo()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_ae5251c8e2246391793c3c4f716777e90} 
+std\+::vector$<$ uint8\+\_\+t $>$ YDLidar\+Controller\+::get\+Device\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_a36d1c84dc7b037a1eb8b16b8536c6e9a}\index{YDLidarController@{YDLidarController}!readResponse@{readResponse}}
+\index{readResponse@{readResponse}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{readResponse()}{readResponse()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_a36d1c84dc7b037a1eb8b16b8536c6e9a} 
+std\+::vector$<$ uint8\+\_\+t $>$ YDLidar\+Controller\+::read\+Response (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_a2a0e72a88f4d13d7d8521fa95ff32f3d}\index{YDLidarController@{YDLidarController}!resetScan@{resetScan}}
+\index{resetScan@{resetScan}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{resetScan()}{resetScan()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_a2a0e72a88f4d13d7d8521fa95ff32f3d} 
+void YDLidar\+Controller\+::reset\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_ae4e127741401b29d5a602a58a06c8f70}\index{YDLidarController@{YDLidarController}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_ae4e127741401b29d5a602a58a06c8f70} 
+void YDLidar\+Controller\+::send\+Command (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{cmd}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_a9050197073b7b98426775860a30fd500}\index{YDLidarController@{YDLidarController}!startScan@{startScan}}
+\index{startScan@{startScan}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{startScan()}{startScan()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_a9050197073b7b98426775860a30fd500} 
+void YDLidar\+Controller\+::start\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_y_d_lidar_controller_acffd369c4d07a5977ad4267fed4ac080}\index{YDLidarController@{YDLidarController}!stopScan@{stopScan}}
+\index{stopScan@{stopScan}!YDLidarController@{YDLidarController}}
+\doxysubsubsection{\texorpdfstring{stopScan()}{stopScan()}}
+{\footnotesize\ttfamily \label{class_y_d_lidar_controller_acffd369c4d07a5977ad4267fed4ac080} 
+void YDLidar\+Controller\+::stop\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_y_d_lidar_controller_8h}{YDLidar\+Controller.\+h}}\end{DoxyCompactItemize}

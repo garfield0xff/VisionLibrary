@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/gyujinkim/Desktop/Github/VisionLibrary/build",
+  "command": "/usr/bin/clang++ -I/Users/gyujinkim/Desktop/Github/VisionLibrary/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/VL1.dir/src/main.cpp.o -c /Users/gyujinkim/Desktop/Github/VisionLibrary/src/main.cpp",
+  "file": "/Users/gyujinkim/Desktop/Github/VisionLibrary/src/main.cpp",
+  "output": "CMakeFiles/VL1.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Github/VisionLibrary/build",
+  "command": "/usr/bin/clang++ -I/Users/gyujinkim/Desktop/Github/VisionLibrary/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/VL1.dir/src/loadsave.cpp.o -c /Users/gyujinkim/Desktop/Github/VisionLibrary/src/loadsave.cpp",
+  "file": "/Users/gyujinkim/Desktop/Github/VisionLibrary/src/loadsave.cpp",
+  "output": "CMakeFiles/VL1.dir/src/loadsave.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Github/VisionLibrary/build",
+  "command": "/usr/bin/clang++ -I/Users/gyujinkim/Desktop/Github/VisionLibrary/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/VL1.dir/src/window_io.cpp.o -c /Users/gyujinkim/Desktop/Github/VisionLibrary/src/window_io.cpp",
+  "file": "/Users/gyujinkim/Desktop/Github/VisionLibrary/src/window_io.cpp",
+  "output": "CMakeFiles/VL1.dir/src/window_io.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Github/VisionLibrary/build",
+  "command": "/usr/bin/clang++ -I/Users/gyujinkim/Desktop/Github/VisionLibrary/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/VL1.dir/src/lidar_base.cpp.o -c /Users/gyujinkim/Desktop/Github/VisionLibrary/src/lidar_base.cpp",
+  "file": "/Users/gyujinkim/Desktop/Github/VisionLibrary/src/lidar_base.cpp",
+  "output": "CMakeFiles/VL1.dir/src/lidar_base.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Github/VisionLibrary/build",
+  "command": "/usr/bin/clang++ -I/Users/gyujinkim/Desktop/Github/VisionLibrary/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/VL1.dir/src/lidar_res.cpp.o -c /Users/gyujinkim/Desktop/Github/VisionLibrary/src/lidar_res.cpp",
+  "file": "/Users/gyujinkim/Desktop/Github/VisionLibrary/src/lidar_res.cpp",
+  "output": "CMakeFiles/VL1.dir/src/lidar_res.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Github/VisionLibrary/build",
+  "command": "/usr/bin/clang++ -I/Users/gyujinkim/Desktop/Github/VisionLibrary/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/VL1.dir/src/lidar_tminiplus.cpp.o -c /Users/gyujinkim/Desktop/Github/VisionLibrary/src/lidar_tminiplus.cpp",
+  "file": "/Users/gyujinkim/Desktop/Github/VisionLibrary/src/lidar_tminiplus.cpp",
+  "output": "CMakeFiles/VL1.dir/src/lidar_tminiplus.cpp.o"
+}
+]

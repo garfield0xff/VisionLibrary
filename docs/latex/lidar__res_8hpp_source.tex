@@ -1,0 +1,71 @@
+\doxysection{lidar\+\_\+res.\+hpp}
+\hypertarget{lidar__res_8hpp_source}{}\label{lidar__res_8hpp_source}\index{include/lidar\_res.hpp@{include/lidar\_res.hpp}}
+\mbox{\hyperlink{lidar__res_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_LIDAR\_RES\_HPP\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_LIDAR\_RES\_HPP\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevl}{vl}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }lidar}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ pack(push,\ 1)}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder}{YDLidarDecoder}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ uint16\_t\ \ \ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_a15881c3db5d5bbefb01f5c6e17b7ce6c}{packet\_header}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ uint8\_t\ \ \ \ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_ae8caa18765ae683779bb26d9ded9bed5}{packet\_type}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ uint8\_t\ \ \ \ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_aee6cd5b24bf849e3c3db3154b179b949}{sample\_count}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response}{Response}}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response}{ScanResponse}}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_af9886d32a8692a8c0b016e1e12160f42}{start\_angle}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_adf004e9d6a433f012fdb2272dbf82d8f}{end\_angle}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_a9641b82329dfefbea13f5814d6ad1afe}{check\_code}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_1_1_sample_node}{SampleNode}}\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_1_1_sample_node_ac4e6c4f008943f8b03226ddc02b60ab6}{intensity}};\ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_1_1_sample_node_ae005c091cd060c303c6951aa6cb46673}{distance\_low}};\ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_1_1_sample_node_a56274904e4360170eede18e75226064e}{distance\_high}};\ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_a1cf192d8b6ef60f42a09f33debf5f633}{samples}}[];}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_ab51778180dcba4b399cef8f3b26d119d}{scan}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_health_response}{HealthResponse}}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_health_response_ab0f7505e8e28c661f4913ea88d61b2ad}{status\_code}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_health_response_ad9fb7db79acbab73bf3bead20ec78e7c}{error\_code}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_a6adbf3d8afd737d3a914ec49488d2013}{health}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response}{DeviceInfoResponse}}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response_a82d44fd96fdaa6e0412380bdf8263268}{model}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response_a892ce9b675c8bf3ec0faa8530b74342f}{firmware\_minor}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response_a3e2ce63e3376dc420260a2ec3a1efe0d}{firmware\_major}};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response_a9c4e9a1a3094eaedf6a1a6da61ce5881}{hardware}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response_a1ac52f6b54a7f5bf06b065f1a6540e33}{serial\_number}}[16];}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_a05e8479f556db1cb5527711a6b4bd894}{device\_info}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_freq_response}{ScanFreqResponse}}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_freq_response_a71c4e6982d4a4f58019ef754e86d88d9}{freq\_data}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_a4ba67af19843ff5492945359b3e032f7}{scan\_freq}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \}\ \mbox{\hyperlink{structvl_1_1lidar_1_1_y_d_lidar_decoder_aef35fed2f85954fbfcaec169d9069bb3}{data}};}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#pragma\ pack(pop)}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevl_1_1lidar_a0e9cf2df74c7c266c1447bf8095adcf8}{decode}}(\textcolor{keyword}{const}\ uint8\_t*\ raw\_data,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \}\ \textcolor{comment}{//\ namespace\ lidar}}
+\DoxyCodeLine{00075\ \}\ \textcolor{comment}{//\ namespace\ vl}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_LIDAR\_RES\_HPP}}
+
+\end{DoxyCode}

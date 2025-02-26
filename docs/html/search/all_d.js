@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['sample_5fcount_0',['sample_count',['../structvl_1_1lidar_1_1_y_d_lidar_decoder.html#aee6cd5b24bf849e3c3db3154b179b949',1,'vl::lidar::YDLidarDecoder']]],
+  ['samplenode_1',['SampleNode',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response_1_1_sample_node.html',1,'vl::lidar::YDLidarDecoder::Response::ScanResponse']]],
+  ['samples_2',['samples',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response.html#a1cf192d8b6ef60f42a09f33debf5f633',1,'vl::lidar::YDLidarDecoder::Response::ScanResponse']]],
+  ['scan_3',['scan',['../unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response.html#ab51778180dcba4b399cef8f3b26d119d',1,'vl::lidar::YDLidarDecoder::Response']]],
+  ['scan_5ffreq_4',['scan_freq',['../unionvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response.html#a4ba67af19843ff5492945359b3e032f7',1,'vl::lidar::YDLidarDecoder::Response']]],
+  ['scanfreqresponse_5',['ScanFreqResponse',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_freq_response.html',1,'vl::lidar::YDLidarDecoder::Response']]],
+  ['scanresponse_6',['ScanResponse',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response.html',1,'vl::lidar::YDLidarDecoder::Response']]],
+  ['sendserialheader_7',['sendSerialHeader',['../classvl_1_1lidar_1_1_base_lidar_controller.html#ab30098a0c714b71ec7fc2120e91ebfbe',1,'vl::lidar::BaseLidarController::sendSerialHeader()'],['../classvl_1_1lidar_1_1_y_d_lidar_controller.html#a0a5447004739b413df1b814b48ef25a1',1,'vl::lidar::YDLidarController::sendSerialHeader()']]],
+  ['serial_5fnumber_8',['serial_number',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_device_info_response.html#a1ac52f6b54a7f5bf06b065f1a6540e33',1,'vl::lidar::YDLidarDecoder::Response::DeviceInfoResponse']]],
+  ['serialwindowbackend_9',['SerialWindowBackend',['../classvl_1_1window__io_1_1_serial_window_backend.html',1,'vl::window_io::SerialWindowBackend'],['../classvl_1_1window__io_1_1_serial_window_backend.html#ae96efc28da0dee3690b943e597d9aa10',1,'vl::window_io::SerialWindowBackend::SerialWindowBackend()']]],
+  ['setloglevel_10',['setLogLevel',['../namespacevl_1_1utils_1_1logger.html#abc308428395717883672be8a774bb9a1',1,'vl::utils::logger']]],
+  ['setport_11',['setPort',['../classvl_1_1lidar_1_1_base_lidar_controller.html#a2a44cee2adfe4aa9c3495259bbf8564b',1,'vl::lidar::BaseLidarController::setPort()'],['../classvl_1_1lidar_1_1_y_d_lidar_controller.html#ae4067abcfe08e8628e1f9aba19b22d68',1,'vl::lidar::YDLidarController::setPort()']]],
+  ['setserial8n1mode_12',['setSerial8N1Mode',['../classvl_1_1window__io_1_1_serial_window_backend.html#acb800a1fe0f2023c8c2b9f51e29d4f55',1,'vl::window_io::SerialWindowBackend']]],
+  ['start_5fangle_13',['start_angle',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_scan_response.html#af9886d32a8692a8c0b016e1e12160f42',1,'vl::lidar::YDLidarDecoder::Response::ScanResponse']]],
+  ['start_5fbit_14',['START_BIT',['../lidar__tminiplus_8hpp.html#a047737489bcc993e33016da6e77ce082',1,'lidar_tminiplus.hpp']]],
+  ['startscan_15',['startScan',['../classvl_1_1lidar_1_1_base_lidar_controller.html#aefbf9ed7cdf0c4bffce1274f7d5c12d3',1,'vl::lidar::BaseLidarController::startScan()'],['../classvl_1_1lidar_1_1_y_d_lidar_controller.html#a88394b80b5e46d85308c3f17d05602b5',1,'vl::lidar::YDLidarController::startScan()']]],
+  ['status_5fcode_16',['status_code',['../structvl_1_1lidar_1_1_y_d_lidar_decoder_1_1_response_1_1_health_response.html#ab0f7505e8e28c661f4913ea88d61b2ad',1,'vl::lidar::YDLidarDecoder::Response::HealthResponse']]],
+  ['stopscan_17',['stopScan',['../classvl_1_1lidar_1_1_base_lidar_controller.html#af22c6d03e8d756efbf72cd1a3ff0f011',1,'vl::lidar::BaseLidarController::stopScan()'],['../classvl_1_1lidar_1_1_y_d_lidar_controller.html#a9e2ef74ec66c08a7cd59ec258f11998a',1,'vl::lidar::YDLidarController::stopScan()']]],
+  ['string_18',['String',['../namespacevl.html#a5186d4a0fdd192cb183b85cb397454da',1,'vl']]]
+];

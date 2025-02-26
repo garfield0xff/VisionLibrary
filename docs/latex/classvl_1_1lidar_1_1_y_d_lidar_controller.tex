@@ -1,0 +1,277 @@
+\doxysection{vl\+::lidar\+::YDLidar\+Controller Class Reference}
+\hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller}{}\label{classvl_1_1lidar_1_1_y_d_lidar_controller}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+
+
+A class that provides to control YDLidar Device.  
+
+
+
+
+{\ttfamily \#include $<$lidar\+\_\+tminiplus.\+hpp$>$}
+
+Inheritance diagram for vl\+::lidar\+::YDLidar\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvl_1_1lidar_1_1_y_d_lidar_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a86d8de661858f6e48dc85811a736dff8}{YDLidar\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classvl_1_1lidar_1_1_y_d_lidar_controller}{YDLidar\+Controller}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a2768db0ffff6a0262049b2899f634d94}{\texorpdfstring{$\sim$}{\string~}\+YDLidar\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{classvl_1_1lidar_1_1_y_d_lidar_controller}{YDLidar\+Controller}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_ae4067abcfe08e8628e1f9aba19b22d68}{set\+Port}} (\mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}} port) override
+\begin{DoxyCompactList}\small\item\em Sets the serial port used by the LIDAR. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a88394b80b5e46d85308c3f17d05602b5}{start\+Scan}} () override
+\begin{DoxyCompactList}\small\item\em Starts scanning (data acquisition) from the LIDAR. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a9e2ef74ec66c08a7cd59ec258f11998a}{stop\+Scan}} () override
+\begin{DoxyCompactList}\small\item\em Stops scanning from the LIDAR. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{Lidar\+Controller}} \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a67b8d83ed6692fc371e47bf2b08ac0f6}{new\+Controller}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a new instance (shared pointer) of the controller. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_ac206467fceaac3fcc52d9be08d856fbb}{get\+Device\+Info}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a5a42662a5c26622ddf35b7636ba146c0}{get\+Scan\+Freq}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a8a048a5d709bf3b646cb42fa4771ec68}{Increase\+Scan\+Freq0\+\_\+1\+Hz}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a3883ec072e4aedb097e76c31878d7f27}{decrease\+Scan\+Freq0\+\_\+1\+Hz}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a46d7425dc7db600269c2b1ff28c25302}{Increase\+Scan\+Freq1\+Hz}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_af0611ea377c258a95162b0523f98b216}{decrease\+Scan\+Freq1\+Hz}} ()
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a66bf6d7740e037eecc9306883f753b4c}{restart}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_ad94adb6aa8693455f2dda2236ddfb24d}{Base\+Lidar\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a78a5f338019c64f998d16f8e07d86a7a}{\texorpdfstring{$\sim$}{\string~}\+Base\+Lidar\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a0a5447004739b413df1b814b48ef25a1}{send\+Serial\+Header}} (\mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{Header}} header) const override
+\begin{DoxyCompactList}\small\item\em write byte header to device file descriptor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a81975836eb0c639862d42af3257bf208}{print\+Serial\+Log}} (int flag) const override
+\begin{DoxyCompactList}\small\item\em Prints or logs serial status information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}} \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a5638bb817fe56d67a70aa42aae32bdcf}{m\+\_\+port}}
+\begin{DoxyCompactList}\small\item\em The serial device port path or identifier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevl_a257869c40f71c7e3d071fe3e1ffe4c6c}{Bps}} \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a7360d2d20e91034879eb139722840422}{m\+\_\+buadrate}}
+\begin{DoxyCompactList}\small\item\em The baudrate used for serial communication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevl_a3b71862b5a750aa9546ddbcfd3b073ba}{File\+Descriptor}} \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a1a34b920f980945415d2926155eeee27}{m\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em The file descriptor for the serial port. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a599070c820a7457e4e22fe70b4f22649}{m\+\_\+timeout\+MS}}
+\begin{DoxyCompactList}\small\item\em Timeout value in milliseconds for serial operations. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a39a00ae15968b423cb8f461c3610b155}{m\+\_\+connected}}
+\begin{DoxyCompactList}\small\item\em Indicates whether the controller is connected to a LIDAR device. \end{DoxyCompactList}\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a8bae19f526c39842c0d0678bc6a55a7d}{m\+\_\+is\+Scanning}}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the controller is currently scanning. \end{DoxyCompactList}\item 
+std\+::thread \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_adbc56a614f986a3708eaa44e869dca3c}{m\+\_\+scan\+Thread}}
+\begin{DoxyCompactList}\small\item\em Thread object used to run the scanning loop. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a2aa17133170ecad6be76eb6f3b0652cf}{m\+\_\+mutex}}
+\begin{DoxyCompactList}\small\item\em Mutex for synchronizing access to shared resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that provides to control YDLidar Device. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a86d8de661858f6e48dc85811a736dff8}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!YDLidarController@{YDLidarController}}
+\index{YDLidarController@{YDLidarController}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{YDLidarController()}{YDLidarController()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a86d8de661858f6e48dc85811a736dff8} 
+vl\+::lidar\+::\+YDLidar\+Controller\+::\+YDLidar\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor for \doxylink{classvl_1_1lidar_1_1_y_d_lidar_controller}{YDLidar\+Controller}. 
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a2768db0ffff6a0262049b2899f634d94}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!````~YDLidarController@{\texorpdfstring{$\sim$}{\string~}YDLidarController}}
+\index{````~YDLidarController@{\texorpdfstring{$\sim$}{\string~}YDLidarController}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}YDLidarController()}{\string~YDLidarController()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a2768db0ffff6a0262049b2899f634d94} 
+vl\+::lidar\+::\+YDLidar\+Controller\+::\texorpdfstring{$\sim$}{\string~}\+YDLidar\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor for \doxylink{classvl_1_1lidar_1_1_y_d_lidar_controller}{YDLidar\+Controller}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a3883ec072e4aedb097e76c31878d7f27}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!decreaseScanFreq0\_1Hz@{decreaseScanFreq0\_1Hz}}
+\index{decreaseScanFreq0\_1Hz@{decreaseScanFreq0\_1Hz}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{decreaseScanFreq0\_1Hz()}{decreaseScanFreq0\_1Hz()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a3883ec072e4aedb097e76c31878d7f27} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::decrease\+Scan\+Freq0\+\_\+1\+Hz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_af0611ea377c258a95162b0523f98b216}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!decreaseScanFreq1Hz@{decreaseScanFreq1Hz}}
+\index{decreaseScanFreq1Hz@{decreaseScanFreq1Hz}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{decreaseScanFreq1Hz()}{decreaseScanFreq1Hz()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_af0611ea377c258a95162b0523f98b216} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::decrease\+Scan\+Freq1\+Hz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_ac206467fceaac3fcc52d9be08d856fbb}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!getDeviceInfo@{getDeviceInfo}}
+\index{getDeviceInfo@{getDeviceInfo}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{getDeviceInfo()}{getDeviceInfo()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_ac206467fceaac3fcc52d9be08d856fbb} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::get\+Device\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a5a42662a5c26622ddf35b7636ba146c0}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!getScanFreq@{getScanFreq}}
+\index{getScanFreq@{getScanFreq}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{getScanFreq()}{getScanFreq()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a5a42662a5c26622ddf35b7636ba146c0} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::get\+Scan\+Freq (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a8a048a5d709bf3b646cb42fa4771ec68}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!IncreaseScanFreq0\_1Hz@{IncreaseScanFreq0\_1Hz}}
+\index{IncreaseScanFreq0\_1Hz@{IncreaseScanFreq0\_1Hz}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{IncreaseScanFreq0\_1Hz()}{IncreaseScanFreq0\_1Hz()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a8a048a5d709bf3b646cb42fa4771ec68} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::\+Increase\+Scan\+Freq0\+\_\+1\+Hz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a46d7425dc7db600269c2b1ff28c25302}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!IncreaseScanFreq1Hz@{IncreaseScanFreq1Hz}}
+\index{IncreaseScanFreq1Hz@{IncreaseScanFreq1Hz}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{IncreaseScanFreq1Hz()}{IncreaseScanFreq1Hz()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a46d7425dc7db600269c2b1ff28c25302} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::\+Increase\+Scan\+Freq1\+Hz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a67b8d83ed6692fc371e47bf2b08ac0f6}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!newController@{newController}}
+\index{newController@{newController}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{newController()}{newController()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a67b8d83ed6692fc371e47bf2b08ac0f6} 
+\mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{Lidar\+Controller}} vl\+::lidar\+::\+YDLidar\+Controller\+::new\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a new instance (shared pointer) of the controller. 
+
+\begin{DoxyReturn}{Returns}
+A shared pointer to the newly created \doxylink{classvl_1_1lidar_1_1_base_lidar_controller}{Base\+Lidar\+Controller}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_aba05b69d3b32ae0f0ebb157e1f2d4eb6}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}.
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a81975836eb0c639862d42af3257bf208}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!printSerialLog@{printSerialLog}}
+\index{printSerialLog@{printSerialLog}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{printSerialLog()}{printSerialLog()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a81975836eb0c639862d42af3257bf208} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::print\+Serial\+Log (\begin{DoxyParamCaption}\item[{int}]{flag}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Prints or logs serial status information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & An integer flag that indicates what to log. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if logging is successful, false otherwise. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+추후에 Lidar 모듈 추가될때 수정 예정 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a514eb764334d0d4b9bc80c2d68bd4dea}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}.
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a66bf6d7740e037eecc9306883f753b4c}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!restart@{restart}}
+\index{restart@{restart}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a66bf6d7740e037eecc9306883f753b4c} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::restart (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a0a5447004739b413df1b814b48ef25a1}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!sendSerialHeader@{sendSerialHeader}}
+\index{sendSerialHeader@{sendSerialHeader}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{sendSerialHeader()}{sendSerialHeader()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a0a5447004739b413df1b814b48ef25a1} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::send\+Serial\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{Header}}}]{header}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+write byte header to device file descriptor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The byte header to send. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true is write command byte to device, false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_ab30098a0c714b71ec7fc2120e91ebfbe}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}.
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_ae4067abcfe08e8628e1f9aba19b22d68}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!setPort@{setPort}}
+\index{setPort@{setPort}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{setPort()}{setPort()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_ae4067abcfe08e8628e1f9aba19b22d68} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::set\+Port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}}}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the serial port used by the LIDAR. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & A string specifying the port (e.\+g., "{}/dev/tty\+USB0"{} on Linux). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the port is set successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_a2a44cee2adfe4aa9c3495259bbf8564b}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}.
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a88394b80b5e46d85308c3f17d05602b5}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!startScan@{startScan}}
+\index{startScan@{startScan}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{startScan()}{startScan()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a88394b80b5e46d85308c3f17d05602b5} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::start\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts scanning (data acquisition) from the LIDAR. 
+
+\begin{DoxyReturn}{Returns}
+True if the scan is successfully started, false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_aefbf9ed7cdf0c4bffce1274f7d5c12d3}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}.
+
+\Hypertarget{classvl_1_1lidar_1_1_y_d_lidar_controller_a9e2ef74ec66c08a7cd59ec258f11998a}\index{vl::lidar::YDLidarController@{vl::lidar::YDLidarController}!stopScan@{stopScan}}
+\index{stopScan@{stopScan}!vl::lidar::YDLidarController@{vl::lidar::YDLidarController}}
+\doxysubsubsection{\texorpdfstring{stopScan()}{stopScan()}}
+{\footnotesize\ttfamily \label{classvl_1_1lidar_1_1_y_d_lidar_controller_a9e2ef74ec66c08a7cd59ec258f11998a} 
+bool vl\+::lidar\+::\+YDLidar\+Controller\+::stop\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stops scanning from the LIDAR. 
+
+\begin{DoxyReturn}{Returns}
+True if the scan is successfully stopped, false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller_af22c6d03e8d756efbf72cd1a3ff0f011}{vl\+::lidar\+::\+Base\+Lidar\+Controller}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{lidar__tminiplus_8hpp}{lidar\+\_\+tminiplus.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,75 @@
+\doxysection{lidar\+\_\+tminiplus.\+hpp}
+\hypertarget{lidar__tminiplus_8hpp_source}{}\label{lidar__tminiplus_8hpp_source}\index{include/lidar\_tminiplus.hpp@{include/lidar\_tminiplus.hpp}}
+\mbox{\hyperlink{lidar__tminiplus_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_LIDAR\_TMINIPLUS\_FMT\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_LIDAR\_TMINIPLUS\_FMT\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{lidar__base_8hpp}{lidar\_base.hpp}}>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <sys/termios.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevl}{vl}}\ \{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }lidar\ }
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ START\_BIT\ 0xA5}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270}{YDLidarScanModes}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a046fa991e71c0d1165c303acf8d81f43}{LIDAR\_START\_SCAN}}\ \ \ \ \ \ \ \ =\ 0x60,}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270abac350945a5e19374517047450fabb80}{LIDAR\_STOP\_SCAN}}\ \ \ \ \ \ \ \ \ =\ 0x65,}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a3870ad5f3b5771139131ae4e69860289}{LIDAR\_GET\_INFO}}\ \ \ \ \ \ \ \ \ \ =\ 0x90,}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270aa546bd7df0658166389106e6aa14572b}{LIDAR\_GET\_HEALTH}}\ \ \ \ \ \ \ \ =\ 0x92,}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a5687f70355d5a736ad7a1e3687620e41}{LIDAR\_FREQ\_UP\_0\_1HZ}}\ \ \ \ \ =\ 0x09,}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a26c95f6ab269e2c89168bcf2a5124d21}{LIDAR\_FREQ\_DOWN\_0\_1HZ}}\ \ \ =\ 0x0A,}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a8575bfe9d1121c6bcf0b03d0aea0d645}{LIDAR\_FREQ\_UP\_1HZ}}\ \ \ \ \ \ \ =\ 0x0B,}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a275e8289361e872b1fe3eec93c90cf3b}{LIDAR\_FREQ\_DOWN\_1HZ}}\ \ \ \ \ =\ 0x0C,}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a19d7213201d0c4c74e4425b3c8036e66}{LIDAR\_GET\_FREQ}}\ \ \ \ \ \ \ \ \ \ =\ 0x0D,}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a75d9b66a6efd5d30f9c6ae1f02edd270a43a4bb1e8ca1840823fb7593aa8311bd}{LIDAR\_SOFT\_RESTART}}\ \ \ \ \ \ =\ 0x40,}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0ef}{YDLidarResponseMode}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa101d8bc05ebfc787e4333df6dfaacacf}{RESPONSE\_CONTINUOUS}},}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa7bf7f9bb28d927b1bd3ec95b99a1142f}{RESPONSE\_NO\_ANSWER}},}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a2cc806e259edf110b25dbaa89e14f0efa62cf8256b33a7eb41062f0db61f762e7}{RESPONSE\_SINGLE\_RESPONSE}},}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller}{YDLidarController}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_base_lidar_controller}{BaseLidarController}}\ }
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a86d8de661858f6e48dc85811a736dff8}{YDLidarController}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a2768db0ffff6a0262049b2899f634d94}{\string~YDLidarController}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_ae4067abcfe08e8628e1f9aba19b22d68}{setPort}}(\ \mbox{\hyperlink{namespacevl_a5186d4a0fdd192cb183b85cb397454da}{String}}\ port)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a88394b80b5e46d85308c3f17d05602b5}{startScan}}()\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a9e2ef74ec66c08a7cd59ec258f11998a}{stopScan}}()\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{namespacevl_1_1lidar_a862f9bf37c7d9407d858f77873ed7eef}{LidarController}}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a67b8d83ed6692fc371e47bf2b08ac0f6}{newController}}()\ \ \ \ \ \ \textcolor{keyword}{const\ \ override};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_ac206467fceaac3fcc52d9be08d856fbb}{getDeviceInfo}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a5a42662a5c26622ddf35b7636ba146c0}{getScanFreq}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a8a048a5d709bf3b646cb42fa4771ec68}{IncreaseScanFreq0\_1Hz}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a3883ec072e4aedb097e76c31878d7f27}{decreaseScanFreq0\_1Hz}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a46d7425dc7db600269c2b1ff28c25302}{IncreaseScanFreq1Hz}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_af0611ea377c258a95162b0523f98b216}{decreaseScanFreq1Hz}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a66bf6d7740e037eecc9306883f753b4c}{restart}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a0a5447004739b413df1b814b48ef25a1}{sendSerialHeader}}(\mbox{\hyperlink{namespacevl_1_1lidar_ab4496757172d6d0ada53059681ac4ef5}{Header}}\ header)\ \textcolor{keyword}{const\ \ override};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvl_1_1lidar_1_1_y_d_lidar_controller_a81975836eb0c639862d42af3257bf208}{printSerialLog}}(\textcolor{keywordtype}{int}\ flag)\ \ \ \ \ \ \ \textcolor{keyword}{const\ \ override};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \};\ \textcolor{comment}{//\ class\ YDLidarController}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \}\ \textcolor{comment}{//\ namespace\ lidar}}
+\DoxyCodeLine{00078\ \}\ \textcolor{comment}{//\ namespace\ vl}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*LIDARTMINIPLUSFMT*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

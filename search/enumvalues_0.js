@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['lidar_5ffreq_5fdown_5f0_5f1hz_0',['LIDAR_FREQ_DOWN_0_1HZ',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a26c95f6ab269e2c89168bcf2a5124d21',1,'vl::lidar']]],
+  ['lidar_5ffreq_5fdown_5f1hz_1',['LIDAR_FREQ_DOWN_1HZ',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a275e8289361e872b1fe3eec93c90cf3b',1,'vl::lidar']]],
+  ['lidar_5ffreq_5fup_5f0_5f1hz_2',['LIDAR_FREQ_UP_0_1HZ',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a5687f70355d5a736ad7a1e3687620e41',1,'vl::lidar']]],
+  ['lidar_5ffreq_5fup_5f1hz_3',['LIDAR_FREQ_UP_1HZ',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a8575bfe9d1121c6bcf0b03d0aea0d645',1,'vl::lidar']]],
+  ['lidar_5fget_5ffreq_4',['LIDAR_GET_FREQ',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a19d7213201d0c4c74e4425b3c8036e66',1,'vl::lidar']]],
+  ['lidar_5fget_5fhealth_5',['LIDAR_GET_HEALTH',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270aa546bd7df0658166389106e6aa14572b',1,'vl::lidar']]],
+  ['lidar_5fget_5finfo_6',['LIDAR_GET_INFO',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a3870ad5f3b5771139131ae4e69860289',1,'vl::lidar']]],
+  ['lidar_5fsoft_5frestart_7',['LIDAR_SOFT_RESTART',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a43a4bb1e8ca1840823fb7593aa8311bd',1,'vl::lidar']]],
+  ['lidar_5fstart_5fscan_8',['LIDAR_START_SCAN',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270a046fa991e71c0d1165c303acf8d81f43',1,'vl::lidar']]],
+  ['lidar_5fstop_5fscan_9',['LIDAR_STOP_SCAN',['../namespacevl_1_1lidar.html#a75d9b66a6efd5d30f9c6ae1f02edd270abac350945a5e19374517047450fabb80',1,'vl::lidar']]],
+  ['log_5flevel_5fdebug_10',['LOG_LEVEL_DEBUG',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831afae9e04ca60653a9990e918fd11b2549',1,'vl::utils::logger']]],
+  ['log_5flevel_5ferror_11',['LOG_LEVEL_ERROR',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831adb715a090f58a50107a895666a21ee8b',1,'vl::utils::logger']]],
+  ['log_5flevel_5ffatal_12',['LOG_LEVEL_FATAL',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831a48f156ed5dc0d2783a03e0e2040ad6b5',1,'vl::utils::logger']]],
+  ['log_5flevel_5finfo_13',['LOG_LEVEL_INFO',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831af9c5f16530db15f8877a866942ae0055',1,'vl::utils::logger']]],
+  ['log_5flevel_5fsilent_14',['LOG_LEVEL_SILENT',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831a96d64735749297f83000740aa959ef10',1,'vl::utils::logger']]],
+  ['log_5flevel_5fverbose_15',['LOG_LEVEL_VERBOSE',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831af2e558adc859a24264b1158f65f0ccc2',1,'vl::utils::logger']]],
+  ['log_5flevel_5fwarning_16',['LOG_LEVEL_WARNING',['../namespacevl_1_1utils_1_1logger.html#a3d8e53bcfc0bd1f1d2a44b6b4b26b831a4edd43954055db1f79804b1cc75878a7',1,'vl::utils::logger']]]
+];
