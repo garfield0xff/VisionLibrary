@@ -71,7 +71,7 @@ bool YDLidarController::printSerialLog(int flag) const
             if (n < 10) continue;
 
             vl::lidar::decode(buffer, n);            
-            // 🛑 시리얼 버퍼 주기적으로 비우기
+
             // tcflush(m_fd, TCIOFLUSH);
         }
     }

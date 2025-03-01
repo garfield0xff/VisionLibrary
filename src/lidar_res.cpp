@@ -1,13 +1,14 @@
 #include <lidar_res.hpp>
 #include <logger.hpp>
 #include <string.h>
-
+#include <ostream>
 
 namespace vl {
 namespace lidar {
 
 void decode(const uint8_t* data, size_t size)
 {
+    
     if (size < sizeof(YDLidarDecoder)) return;
 
     const YDLidarDecoder* decoder = reinterpret_cast<const YDLidarDecoder*>(data);
@@ -18,12 +19,22 @@ void decode(const uint8_t* data, size_t size)
     {
         case 0x55AA: // Scan Response
             if(decoder->sample_count == 0x01)break;
+            
+
             for(int i = 0; i < decoder->sample_count; i++)
             {
-                uint16_t distance =  static_cast<uint16_t>(( static_cast<uint16_t>(decoder->data.scan.samples[i].distance_high) << 6 ) + (static_cast<uint16_t>(decoder->data.scan.samples[i].distance_low) >> 2));
-                if(distance > 5000) VL_LOG_INFO("DISTANCE", std::to_string(distance).c_str());
+                auto& sample = decoder->data.scan.samples[i];
+                uint16_t distance = (static_cast<uint16_t>(sample.distance_high) << 6) | 
+                        (static_cast<uint16_t>(sample.distance_low) >> 2);
+
+                uint8_t flag = (sample.distance_low & 0xC0) >> 6;
+                if (sample.intensity == 0 || sample.intensity == 255) continue;
+                if (distance == 0 || distance > 4000) continue;
+                if (flag == 2 || flag == 3) continue;
+    
+                printf("Sample %d - Intensity: %u, Distance: %.4f\n", i, sample.intensity, distance * 0.001);
             }
-            
+
             // printf("Scan Response - Start Angle: %u, End Angle: %u\n",
             //        decoder->data.scan.start_angle,
             //        decoder->data.scan.end_angle);
