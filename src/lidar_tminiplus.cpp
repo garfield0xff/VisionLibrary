@@ -1,6 +1,6 @@
 #include <lidar_tminiplus.hpp>
 #include <vector>
-
+#include <format>
 
 
 namespace vl {
@@ -35,7 +35,6 @@ bool YDLidarController::setPort(String port)
 //     return calculated_checksum == received_checksum;
 // }
 
-
 bool YDLidarController::startScan()
 {
     if (m_isScanning.load())
@@ -68,10 +67,41 @@ bool YDLidarController::printSerialLog(int flag) const
         while(m_isScanning.load())
         {
             int n = read(m_fd, buffer, sizeof(buffer));
+
+            // TMiniHeader Byte
             if (n < 10) continue;
 
-            vl::lidar::decode(buffer, n);            
+            auto* hdr = reinterpret_cast<const TMiniHeader*>(buffer);
 
+            if(hdr->header == 0x55AA) {
+                int needed = sizeof(TMiniHeader) + hdr -> lsn * 3;
+                if(n < needed) {
+                    int remain = needed - n;
+
+                    int more = read(m_fd, buffer + n, remain);
+                    if(more > 0) {
+                        n += more;
+                    }
+                }
+
+                if(n == needed) {
+                    const uint8_t* sampleNode_ptr = buffer + 10;
+
+                    for(size_t i = 0; i < hdr->lsn; i++) {
+                        uint8_t s1 = sampleNode_ptr[0];
+                        uint8_t s2 = sampleNode_ptr[1];
+                        uint8_t s3 = sampleNode_ptr[2];
+                        uint16_t distance = (static_cast<uint16_t>(s3) << 6) | 
+                        (static_cast<uint16_t>(s2) >> 2);
+
+                        if(distance > 3000) std::cout << "체크 다시해라" << std::endl;
+
+                        
+                        
+                    }
+                }
+            } 
+            
             // tcflush(m_fd, TCIOFLUSH);
         }
     }
