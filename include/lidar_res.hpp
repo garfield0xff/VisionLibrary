@@ -66,10 +66,6 @@ struct SampleNode
 // bool decode(const uint8_t* data, size_t length);
 
 
-bool verifyTminiPacket(const uint8_t* data, size_t length);
-
-
-
 } // namespace lidar
 } // namespace vl
 

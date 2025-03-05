@@ -1,7 +1,5 @@
 #include <lidar_tminiplus.hpp>
 #include <vector>
-#include <format>
-
 
 namespace vl {
 namespace lidar{
@@ -25,16 +23,6 @@ bool YDLidarController::setPort(String port)
     return true;
 }
 
-
-// bool isValidChecksum(uint8_t* buffer, int len) {
-//     uint16_t calculated_checksum = 0;
-//     for (int i = 0; i < len - 2; i++) {
-//         calculated_checksum ^= buffer[i];  // XOR checksum 계산
-//     }
-//     uint16_t received_checksum = (buffer[len - 2] << 8) | buffer[len - 1];
-//     return calculated_checksum == received_checksum;
-// }
-
 bool YDLidarController::startScan()
 {
     if (m_isScanning.load())
@@ -50,19 +38,29 @@ bool YDLidarController::startScan()
     sendSerialHeader(start_header);
     
     m_isScanning.store(true);
-    int flag = RESPONSE_CONTINUOUS;
-    m_scanThread = std::thread([this, flag](){ this->printSerialLog(flag);});
-
+    updateSerialState(RESPONSE_CONTINUOUS);
+    runSerialLogger();
+    
     return true;
 }
 
-bool YDLidarController::printSerialLog(int flag) const
+bool YDLidarController::runSerialLogger() {
+    m_scanThread = std::thread([this]() { readSerialLog();});
+    return true;
+}
+
+bool YDLidarController::updateSerialState(int newFlag) {
+    m_response_type = newFlag;
+    return true;
+}
+
+bool YDLidarController::readSerialLog() 
 {
     uint8_t buffer[2048];
 
     int total_sample_count = 0;  
 
-    if(flag == RESPONSE_CONTINUOUS)
+    if(m_response_type == RESPONSE_CONTINUOUS)
     {
         while(m_isScanning.load())
         {
@@ -72,36 +70,46 @@ bool YDLidarController::printSerialLog(int flag) const
             if (n < 10) continue;
 
             auto* hdr = reinterpret_cast<const TMiniHeader*>(buffer);
+            
+            uint16_t checkSum = 0;
+            uint16_t ct_lsn = ToUint16LE(hdr->ct, hdr->lsn);
+
+            checkSum ^= hdr->header;
+            checkSum ^= ct_lsn;
+            checkSum ^= hdr->fsa;
+            checkSum ^= hdr->lsa;
+            
 
             if(hdr->header == 0x55AA) {
-                int needed = sizeof(TMiniHeader) + hdr -> lsn * 3;
-                if(n < needed) {
-                    int remain = needed - n;
+                int scan_packet_size = sizeof(TMiniHeader) + hdr -> lsn * 3;
+                if(n < scan_packet_size) {
+                    int remain = scan_packet_size - n;
 
-                    int more = read(m_fd, buffer + n, remain);
+                    int more = ::read(m_fd, buffer + n, remain);
                     if(more > 0) {
                         n += more;
                     }
                 }
 
-                if(n == needed) {
+                if(n == scan_packet_size) {
                     const uint8_t* sampleNode_ptr = buffer + 10;
 
                     for(size_t i = 0; i < hdr->lsn; i++) {
                         uint8_t s1 = sampleNode_ptr[0];
                         uint8_t s2 = sampleNode_ptr[1];
                         uint8_t s3 = sampleNode_ptr[2];
+                        
+                        checkSum ^= ToUint16LE(s1, 0x00);
+                        checkSum ^= ToUint16LE(s2, s3);
+
                         uint16_t distance = (static_cast<uint16_t>(s3) << 6) | 
                         (static_cast<uint16_t>(s2) >> 2);
 
-                        if(distance > 3000) std::cout << "체크 다시해라" << std::endl;
-
-                        
-                        
+                        sampleNode_ptr += 3;
+                        std::cout << "distance : " <<  distance << std::endl;
                     }
                 }
             } 
-            
             // tcflush(m_fd, TCIOFLUSH);
         }
     }
@@ -109,7 +117,6 @@ bool YDLidarController::printSerialLog(int flag) const
     // std::cout << "[INFO] Final Total Sample Count: " << total_sample_count << std::endl;
     return true;
 }
-
 
 
 bool YDLidarController::stopScan()

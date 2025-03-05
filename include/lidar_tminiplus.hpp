@@ -69,8 +69,10 @@ public:
 
 
 protected:
-    bool sendSerialHeader(Header header) const  override;
-    bool printSerialLog(int flag)       const  override;
+    bool sendSerialHeader(Header header)    const  override;
+    bool readSerialLog()                           override;
+    bool runSerialLogger()                         override;
+    bool updateSerialState(int newFlag)            override;
 
 }; // class YDLidarController
 

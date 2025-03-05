@@ -20,7 +20,7 @@ loadLidar(const String port, int flags)
         std::cout << "[INFO] YDLIDAR SELECTED" << std::endl;
         controller->setPort(port);
         controller->startScan();
-        sleep(300);
+        sleep(10);
         controller->stopScan();
     }
 

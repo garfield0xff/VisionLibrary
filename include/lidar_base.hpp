@@ -133,12 +133,25 @@ protected:
     virtual bool sendSerialHeader(Header header) const;
 
     /**
+     * @brief run serial loggger
+     * @return True if fetch serial Log success 
+     */
+    virtual bool runSerialLogger() = 0;
+
+    /**
+     * @brief update header flag
+     * 
+     * @param newFlag 
+     * @return True if update flag success
+     */
+    virtual bool updateSerialState(int newFlag) = 0;
+
+    /**
      * @brief Prints or logs serial status information.
-     * @param flag An integer flag that indicates what to log.
      * @return True if logging is successful, false otherwise.
      * @note  추후에 Lidar 모듈 추가될때 수정 예정
      */
-    virtual bool printSerialLog(int flag) const = 0; // Todo: Implement in derived LIDAR modules
+    virtual bool readSerialLog() = 0; // Todo: Implement in derived LIDAR modules
 
     /**
      * @brief Flag indicating whether the controller is currently scanning.
@@ -154,6 +167,12 @@ protected:
      * @brief Mutex for synchronizing access to shared resources.
      */
     std::mutex m_mutex;
+
+    /**
+     * @brief type for response that lidar header
+     */
+    uint8_t m_response_type;
+
 
 }; // class BaseLidarController
 
