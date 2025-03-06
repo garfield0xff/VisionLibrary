@@ -44,6 +44,12 @@ bool YDLidarController::startScan()
     return true;
 }
 
+std::vector<PointCloud> YDLidarController::getPointCloud() {
+    std::lock_guard<std::mutex> lock(m_pointCloudMutex);
+    return m_lastFrame;  // 최신 프레임의 복사본 반환
+}
+
+
 bool YDLidarController::runSerialLogger() {
     m_scanThread = std::thread([this]() { readSerialLog();});
     return true;
@@ -64,6 +70,7 @@ bool YDLidarController::readSerialLog()
     {
         while(m_isScanning.load())
         {
+            std::vector<PointCloud> frame_per_pointCloud;
             int n = read(m_fd, buffer, sizeof(buffer));
 
             // TMiniHeader Byte
@@ -79,7 +86,6 @@ bool YDLidarController::readSerialLog()
             checkSum ^= hdr->fsa;
             checkSum ^= hdr->lsa;
             
-
             if(hdr->header == 0x55AA) {
                 int scan_packet_size = sizeof(TMiniHeader) + hdr -> lsn * 3;
                 if(n < scan_packet_size) {
@@ -92,7 +98,14 @@ bool YDLidarController::readSerialLog()
                 }
 
                 if(n == scan_packet_size) {
+                    float fsa_deg = (static_cast<float>(hdr->fsa >> 1)) / 64.0f;
+                    float lsa_deg = (static_cast<float>(hdr->lsa >> 1)) / 64.0f;
+
                     const uint8_t* sampleNode_ptr = buffer + 10;
+
+                    frame_per_pointCloud.clear();
+                    // 미리 사이즈 할당
+                    frame_per_pointCloud.reserve(hdr->lsn);
 
                     for(size_t i = 0; i < hdr->lsn; i++) {
                         uint8_t s1 = sampleNode_ptr[0];
@@ -102,11 +115,41 @@ bool YDLidarController::readSerialLog()
                         checkSum ^= ToUint16LE(s1, 0x00);
                         checkSum ^= ToUint16LE(s2, s3);
 
-                        uint16_t distance = (static_cast<uint16_t>(s3) << 6) | 
-                        (static_cast<uint16_t>(s2) >> 2);
+                        uint16_t distance = (static_cast<uint16_t>(s3) << 6) | (static_cast<uint16_t>(s2) >> 2);
+                        
+                        float angle_deg;
+                        if(hdr->lsn > 1) {
+                            angle_deg = fsa_deg + (lsa_deg - fsa_deg) * (static_cast<float>(i) / (hdr->lsn - 1));
+                        } else {
+                            angle_deg = fsa_deg;
+                        }
+                        
+                        // angle to radian
+                        float angle_rad = angle_deg * static_cast<float>(M_PI) / 180.0f;
+                        float dist = static_cast<float>(distance);
+                        float x = dist * std::cos(angle_rad);
+                        float y = dist * std::sin(angle_rad);
+                        
+                        PointCloud pc;
+                        pc.x = x;
+                        pc.y = y;
+                        pc.distance = dist;
+                        pc.intensity = s1;
+                        pc.angle_deg = angle_deg;
+                        frame_per_pointCloud.push_back(pc);
 
                         sampleNode_ptr += 3;
-                        std::cout << "distance : " <<  distance << std::endl;
+
+
+                    } // if(n == scan_packet_size)
+                    
+                    {
+                        std::lock_guard<std::mutex> lock(m_pointCloudMutex);
+                        m_lastFrame = frame_per_pointCloud;
+                    }
+
+                    for(int i = 0; i < frame_per_pointCloud.size(); i++) {
+                        std::cout << "Sample " << i << " [ " "x : " << frame_per_pointCloud[i].x  << " y : " << frame_per_pointCloud[i].y  << " ] " << std::endl;
                     }
                 }
             } 

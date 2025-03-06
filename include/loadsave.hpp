@@ -3,11 +3,15 @@
 
 #include <lidar.hpp>
 #include <window_io.hpp>
+#include <window_fb.hpp>
+
 
 namespace vl {
 
 namespace lidar{
     
+void showPointCloud(std::shared_ptr<vl::lidar::BaseLidarController> controller);
+
 bool 
 loadLidar(const String port, int flags); 
 

@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 project(VL1)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 find_package(Doxygen REQUIRED)
 if(Doxygen_FOUND)
     set(DOXYGEN_IN      ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
@@ -19,6 +22,15 @@ endif()
 
 set(CMAKE_DOXYGEN_LAYOUT "${CMAKE_CURRENT_BINARY_DIR}/docs/layout.xml")
 
+find_package(OpenGL REQUIRED)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GLFW REQUIRED glfw3)
+
+find_package(glm CONFIG REQUIRED)
+message(STATUS "Found GLM version ${glm_VERSION}")
+
+
 set(SOURCE
     src/main.cpp
     src/loadsave.cpp
@@ -28,11 +40,18 @@ set(SOURCE
     src/lidar_tminiplus.cpp
 )
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 add_executable(VL1 ${SOURCE})
 
 
-target_include_directories(VL1 PRIVATE ${PROJECT_SOURCE_DIR}/include)
-target_link_libraries(VL1)
+target_include_directories(VL1 PRIVATE 
+    ${PROJECT_SOURCE_DIR}/include
+    ${GLFW_INCLUDE_DIRS}
+)
+
+target_link_libraries(VL1 PRIVATE
+    ${GLFW_LIBRARIES}
+    OpenGL::GL
+    glm::glm
+)
+
+target_link_options(VL1 PRIVATE ${GLFW_LDFLAGS})

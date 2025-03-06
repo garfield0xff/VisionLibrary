@@ -58,6 +58,7 @@ public:
     bool startScan()                            override;
     bool stopScan()                             override;
     LidarController newController()      const  override;
+    std::vector<PointCloud> getPointCloud()     override;
 
     bool getDeviceInfo();
     bool getScanFreq();
@@ -67,12 +68,18 @@ public:
     bool decreaseScanFreq1Hz();
     bool restart();
 
+    
+
 
 protected:
     bool sendSerialHeader(Header header)    const  override;
     bool readSerialLog()                           override;
     bool runSerialLogger()                         override;
     bool updateSerialState(int newFlag)            override;
+
+private:
+    std::mutex m_pointCloudMutex;
+    std::vector<PointCloud> m_lastFrame;
 
 }; // class YDLidarController
 

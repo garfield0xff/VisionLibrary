@@ -20,6 +20,15 @@ static inline uint16_t ToUint16LE(uint8_t low, uint8_t high)
 namespace lidar
 {
 
+struct PointCloud {
+    float x;
+    float y;
+    float distance;
+    uint8_t intensity;
+    float angle_deg;
+};
+
+
 #pragma pack(push, 1)
 /**
  * @brief A Struct that Decode YDLidarResponse

@@ -93,6 +93,10 @@ public:
      */
     virtual bool stopScan();
 
+    
+    virtual std::vector<PointCloud> getPointCloud() = 0;
+    
+
     /**
      * @brief  Creates a new instance (shared pointer) of the controller.
      * @return A shared pointer to the newly created BaseLidarController.
