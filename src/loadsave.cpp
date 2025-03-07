@@ -5,8 +5,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+
 namespace vl {
 namespace lidar {
+
+
 
 bool loadLidar(const String port, int flags) 
 {
@@ -20,7 +23,7 @@ bool loadLidar(const String port, int flags)
         controller->setPort(port);
         controller->startScan();
         // showPointCloud(controller);
-        sleep(60);
+        sleep(5);
         controller->stopScan();
     }
 
@@ -44,7 +47,7 @@ void showPointCloud(std::shared_ptr<vl::lidar::BaseLidarController> controller) 
         uniform mat4 mvp;
         void main() {
             gl_Position = mvp * vec4(aPos, 0.0, 1.0);
-            gl_PointSize = 10.0;  // 필요에 따라 점 크기 설정
+            gl_PointSize = 3.0;  // 필요에 따라 점 크기 설정
         }
     )";
     
@@ -65,7 +68,7 @@ void showPointCloud(std::shared_ptr<vl::lidar::BaseLidarController> controller) 
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     
-    size_t maxPoints = 100; // 필요에 따라 조정
+    size_t maxPoints = 50; // 필요에 따라 조정
     glBufferData(GL_ARRAY_BUFFER, maxPoints * sizeof(vl::lidar::PointCloud), nullptr, GL_DYNAMIC_DRAW);
     
     // attribute 0: vec2 aPos (x, y) -> offset 0, 2개의 float
@@ -87,45 +90,20 @@ void showPointCloud(std::shared_ptr<vl::lidar::BaseLidarController> controller) 
         
         // 최신 pointCloud 데이터 가져오기
         std::vector<vl::lidar::PointCloud> pointCloud = controller->getPointCloud();
+        std::cout <<  "point cloud size : " << pointCloud.size() << std::endl;
         
         // VBO 업데이트: 새 pointCloud 데이터를 GPU로 복사
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferSubData(GL_ARRAY_BUFFER, 0, pointCloud.size() * sizeof(vl::lidar::PointCloud), pointCloud.data());
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         
-        // pointCloud의 x, y 최소/최대 계산
-        float minX = std::numeric_limits<float>::max();
-        float maxX = std::numeric_limits<float>::lowest();
-        float minY = std::numeric_limits<float>::max();
-        float maxY = std::numeric_limits<float>::lowest();
-        for (const auto &pt : pointCloud) {
-            if (pt.x < minX) minX = pt.x;
-            if (pt.x > maxX) maxX = pt.x;
-            if (pt.y < minY) minY = pt.y;
-            if (pt.y > maxY) maxY = pt.y;
-        }
         
-        // 만약 데이터가 없으면 기본값 설정
-        if (pointCloud.empty()) {
-            minX = -1.0f; maxX = 1.0f;
-            minY = -1.0f; maxY = 1.0f;
-        }
-        
-        // 중앙 및 반폭 계산
-        float centerX = (minX + maxX) / 2.0f;
-        float centerY = (minY + maxY) / 2.0f;
-        float halfWidth = (maxX - minX) / 2.0f;
-        float halfHeight = (maxY - minY) / 2.0f;
-        float halfSize = std::max(halfWidth, halfHeight);
-        
-        // 약간 여유를 두기 위해 패딩 추가 (예: 10%)
-        halfSize *= 1.1f;
         
         // Orthographic projection: 좌표계를 [-halfSize, halfSize] 범위로 매핑
-        glm::mat4 proj = glm::ortho(-halfSize, halfSize, -halfSize, halfSize, -1.0f, 1.0f);
+        glm::mat4 proj = glm::ortho(-50.0f, 50.0f, -50.0f, 50.0f, -1.0f, 1.0f);
         
         // Model 행렬: 모든 점을 (-centerX, -centerY)로 이동하여 중앙 정렬
-        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(-centerX, -centerY, 0.0f));
+        glm::mat4 model = glm::mat4(1.0f);
         
         // 최종 MVP 변환
         glm::mat4 mvp = proj * model;

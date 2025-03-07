@@ -57,7 +57,7 @@ inline GLFWwindow* initializeWindow(const char* window_name) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
-    GLFWwindow* window = glfwCreateWindow(800, 600, window_name, nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(800, 800, window_name, nullptr, nullptr);
     if (!window) {
         std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
