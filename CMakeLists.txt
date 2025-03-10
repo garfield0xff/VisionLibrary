@@ -4,6 +4,12 @@ project(VL1)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_package(OpenGL REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GLFW REQUIRED glfw3)
+find_package(glm CONFIG REQUIRED)
+
 # find_package(Doxygen REQUIRED)
 # if(Doxygen_FOUND)
 #     set(DOXYGEN_IN      ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
@@ -22,26 +28,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # set(CMAKE_DOXYGEN_LAYOUT "${CMAKE_CURRENT_BINARY_DIR}/docs/layout.xml")
 
-find_package(OpenGL REQUIRED)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GLFW REQUIRED glfw3)
-
-find_package(glm CONFIG REQUIRED)
-message(STATUS "Found GLM version ${glm_VERSION}")
-
-
-set(SOURCE
-    src/main.cpp
-    src/loadsave.cpp
-    src/window_io.cpp
-    src/lidar_base.cpp
-    src/lidar_res.cpp
-    src/lidar_tminiplus.cpp
+## GOOGLE TEST
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
+FetchContent_MakeAvailable(googletest)
+
+file(GLOB_RECURSE SOURCE "src/*.cpp")
 
 add_executable(VL1 ${SOURCE})
-
 
 target_include_directories(VL1 PRIVATE 
     ${PROJECT_SOURCE_DIR}/include
@@ -54,6 +52,27 @@ target_link_libraries(VL1 PRIVATE
     ${OpenCV_LIBS}
     OpenGL::GL
     glm::glm
+    pthread
 )
 
 target_link_options(VL1 PRIVATE ${GLFW_LDFLAGS})
+
+set(TEST_SOURCE
+    src/ts/ts.cpp 
+)
+
+add_executable(runUnitTests ${TEST_SOURCE})
+
+target_include_directories(runUnitTests PRIVATE 
+    ${PROJECT_SOURCE_DIR}/include
+    ${GTEST_INCLUDE_DIRS}
+)
+
+target_link_libraries(runUnitTests PRIVATE
+    GTest::gtest_main
+    pthread
+)
+
+enable_testing()
+add_test(NAME SERIAL_TESTS COMMAND runUnitTests)
+add_test(NAME SERIAL_TEST2 COMMAND runUnitTests)

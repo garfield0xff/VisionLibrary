@@ -12,8 +12,8 @@
 #include <vector>
 #include <unistd.h>
 #include <fcntl.h>
-#include <window_io.hpp>
-#include <lidar_res.hpp>
+#include <window/window_io.hpp>
+#include <lidar/lidar_res.hpp>
 #include <thread>
 #include <logger.hpp>
 #include <memory>   // for std::shared_ptr

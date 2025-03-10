@@ -1,7 +1,7 @@
 #ifndef _LIDAR_TMINIPLUS_FMT_
 #define _LIDAR_TMINIPLUS_FMT_
 
-#include <lidar_base.hpp>
+#include <lidar/lidar_base.hpp>
 #include <sys/termios.h>
 
 

@@ -1,9 +1,9 @@
 #ifndef _LOADSAVE_H_
 #define _LOADSAVE_H_
 
-#include <lidar.hpp>
-#include <window_io.hpp>
-#include <window_fb.hpp>
+#include <lidar/lidar.hpp>
+#include <window/window_io.hpp>
+#include <window/window_fb.hpp>
 
 
 namespace vl {

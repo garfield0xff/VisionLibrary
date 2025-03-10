@@ -1,4 +1,4 @@
-#include <lidar_base.hpp>
+#include <lidar/lidar_base.hpp>
 
 namespace vl 
 {

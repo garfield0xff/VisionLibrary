@@ -9,8 +9,6 @@
 namespace vl {
 namespace lidar {
 
-
-
 bool loadLidar(const String port, int flags) 
 {
     LidarController controller;
@@ -35,6 +33,7 @@ void showPointCloud(std::shared_ptr<vl::lidar::BaseLidarController> controller) 
         std::cerr << "Failed to initialize GLFW\n";
         return;
     }
+
 
     GLFWwindow* window = initializeWindow("PointCloud Viewer");
     if (!window) return;
