@@ -38,11 +38,25 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 file(GLOB_RECURSE SOURCE "src/*.cpp")
+foreach(src_file ${SOURCE})
+    if(src_file MATCHES "/test/")
+        list(REMOVE_ITEM SOURCE ${src_file})
+        message(${src_file})
+    endif()
+endforeach()
+
+file(GLOB INCLUDE_DIRS RELATIVE ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/include/*)
+list(REMOVE_ITEM INCLUDE_DIRS "ts")
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+foreach(dir ${INCLUDE_DIRS})
+    include_directories(${CMAKE_SOURCE_DIR}/include/${dir})
+endforeach()
 
 add_executable(VL1 ${SOURCE})
 
 target_include_directories(VL1 PRIVATE 
-    ${PROJECT_SOURCE_DIR}/include
     ${GLFW_INCLUDE_DIRS}
     ${OpenCV_INCLUDE_DIRS}
 )
@@ -58,7 +72,7 @@ target_link_libraries(VL1 PRIVATE
 target_link_options(VL1 PRIVATE ${GLFW_LDFLAGS})
 
 set(TEST_SOURCE
-    src/ts/ts.cpp 
+    src/serial/test/test_serial_linux.cpp
 )
 
 add_executable(runUnitTests ${TEST_SOURCE})
@@ -74,5 +88,5 @@ target_link_libraries(runUnitTests PRIVATE
 )
 
 enable_testing()
-add_test(NAME SERIAL_TESTS COMMAND runUnitTests)
-add_test(NAME SERIAL_TEST2 COMMAND runUnitTests)
+add_test(NAME SERIAL_TEST COMMAND runUnitTests)
+
