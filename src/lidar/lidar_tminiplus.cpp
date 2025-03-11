@@ -7,7 +7,6 @@ namespace lidar{
 
 YDLidarController::YDLidarController() 
 {
-    m_buadrate = B230400;
     std::cout << "YDLidarCOntroller called" << std::endl;
 }
 
@@ -16,38 +15,21 @@ YDLidarController::~YDLidarController()
     std::cout << "YDLidarController deleted" << std::endl;
 }
 
-bool YDLidarController::setPort(String port)
-{
-    m_port = port; 
-    m_fd = open(port.c_str(), O_RDWR | O_NOCTTY | O_SYNC ); 
-    if(m_fd < 0) std::cerr << "[Error] failed to open" << std::endl;
-    return true;
-}
+
 
 bool YDLidarController::startScan()
 {
-    if (m_isScanning.load())
-    {
-        std::cout << "[INFO] LIDAR iS ALREADY SCANNING" << std::endl;
-        return false;
-    }
-
-    window_io::SerialWindowBackend sw;
-    sw.initTermios(m_fd);
-
-    Header start_header = { START_BIT, LIDAR_START_SCAN };
-    sendSerialHeader(start_header);
-    
-    m_isScanning.store(true);
-    updateSerialState(RESPONSE_CONTINUOUS);
-    runSerialLogger();
+    uint8_t start_bit[2] = {START_BIT, LIDAR_START_SCAN};
+    if(!m_serial->write(start_bit, sizeof(start_bit))) {
+        VL_LOG_DEBUG("WRITE", "START BIT FAILED");
+    };
     
     return true;
 }
 
 std::vector<PointCloud> YDLidarController::getPointCloud() {
     std::lock_guard<std::mutex> lock(m_pointCloudMutex);
-    return m_lastFrame;  // 최신 프레임의 복사본 반환
+    return m_lastFrame;  
 }
 
 
@@ -173,23 +155,10 @@ bool YDLidarController::readSerialLog()
     return true;
 }
 
-
-
-
 bool YDLidarController::stopScan()
 {
-    if(!m_isScanning.load())
-    {
-        std::cout << "[INFO] LIDAR is not currently scanning " << std::endl;
-        return false;
-    }
-
-    Header stop_header = { START_BIT, LIDAR_STOP_SCAN };
-    sendSerialHeader(stop_header);
-
-    m_isScanning.store(false);
-
-    if(m_scanThread.joinable()) m_scanThread.join();
+    uint8_t stop_bit[2] = {START_BIT, LIDAR_STOP_SCAN};
+    m_serial->write(stop_bit, sizeof(stop_bit));
     return true;
 }
 

@@ -1,25 +1,21 @@
 #include "ts/ts.hpp"
+#include "logger.hpp"
 #include "serial/serial.h"
 
-// 
+using namespace vl::lidar::serial;
+
 
 namespace vl_test {
     TEST(SERIAL_TEST, device_port) {
         std::vector<PortInfo> lst = list_ports();
 
+        if(lst.empty()) VL_LOG_ERROR("ERROR", "DEVICE FS IS EMPTY");
 
-        std::map<std::string, std::string> ports;
-    
         for (std::vector<PortInfo>::iterator it = lst.begin(); it != lst.end(); it++)
         {
-            std::string port = "ydlidar" + (*it).device_id;
-            ports[port] = (*it).port;
+            VL_LOG_DEBUG("SERIAL_TEST", (*it).port.c_str());
         }
 
-        for(const auto &[device_name, port] : ports) {
-            cout << "device name : " << device_name << endl;
-            cout << "ports name : " << port << endl;
-        }
     }
 }
     

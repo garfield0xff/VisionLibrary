@@ -38,10 +38,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 file(GLOB_RECURSE SOURCE "src/*.cpp")
+
 foreach(src_file ${SOURCE})
     if(src_file MATCHES "/test/")
+        message(${src_file}}\n)
         list(REMOVE_ITEM SOURCE ${src_file})
-        message(${src_file})
     endif()
 endforeach()
 
@@ -73,6 +74,7 @@ target_link_options(VL1 PRIVATE ${GLFW_LDFLAGS})
 
 set(TEST_SOURCE
     src/serial/test/test_serial_linux.cpp
+    src/serial/serial_linux.cpp
 )
 
 add_executable(runUnitTests ${TEST_SOURCE})

@@ -54,7 +54,6 @@ public:
     ~YDLidarController();
 
 
-    bool setPort( String port)                  override;
     bool startScan()                            override;
     bool stopScan()                             override;
     LidarController newController()      const  override;

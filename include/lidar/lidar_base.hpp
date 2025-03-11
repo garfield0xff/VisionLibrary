@@ -8,12 +8,14 @@
  *          providing basic methods to start, stop, and manage communication with LIDAR sensors.
  */
 
+#include "serial/serial.h"
+#include "lidar/lidar_res.hpp"
+#include "logger.hpp"
+
 #include <vlstd.hpp>
 #include <vector>
 #include <unistd.h>
 #include <fcntl.h>
-#include <window/window_io.hpp>
-#include <lidar/lidar_res.hpp>
 #include <thread>
 #include <logger.hpp>
 #include <memory>   // for std::shared_ptr
@@ -75,11 +77,12 @@ public:
     ~BaseLidarController() {};
 
     /**
-     * @brief  Sets the serial port used by the LIDAR.
-     * @param  port A string specifying the port (e.g., "/dev/ttyUSB0" on Linux).
-     * @return True if the port is set successfully, false otherwise.
+     * @brief show lidar ports and set ports
      */
-    virtual bool setPort(String port);
+    bool loadLidar();
+
+    
+    bool setBuadrate(int baudrate);
 
     /**
      * @brief  Starts scanning (data acquisition) from the LIDAR.
@@ -93,6 +96,8 @@ public:
      */
     virtual bool stopScan();
 
+    virtual bool initialize();
+
     
     virtual std::vector<PointCloud> getPointCloud() = 0;
     
@@ -104,6 +109,11 @@ public:
     virtual LidarController newController() const;
 
 protected:
+
+    LidarDevice m_device;
+
+    serial::Serial *m_serial = nullptr;
+
     /**
      * @brief The serial device port path or identifier.
      */
@@ -112,7 +122,7 @@ protected:
     /**
      * @brief The baudrate used for serial communication.
      */
-    Bps m_buadrate;
+    Bps m_baudrate;
 
     /**
      * @brief The file descriptor for the serial port.
@@ -179,7 +189,6 @@ protected:
 
 
 }; // class BaseLidarController
-
 } // namespace lidar
 } // namespace vl
 

@@ -7,7 +7,6 @@
 
 #define GLFW_INCLUDE_GLCOREARB
 #include <GLFW/glfw3.h>
-#include <iostream>
 #include <vector>
 
 static void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -24,7 +23,6 @@ inline GLuint compileShader(const char* source, GLenum shaderType) {
     if (!success) {
         char infoLog[512];
         glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-        std::cerr << "ERROR::SHADER::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
     return shader;
 }
@@ -59,7 +57,6 @@ inline GLFWwindow* initializeWindow(const char* window_name) {
     
     GLFWwindow* window = glfwCreateWindow(800, 800, window_name, nullptr, nullptr);
     if (!window) {
-        std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
         return nullptr;
     }
