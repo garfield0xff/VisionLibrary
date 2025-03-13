@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <format>
-
+#include <termios.h>
 
 
 using namespace std;
@@ -27,8 +27,9 @@ public:
   bool close();
   bool isOpen();
   bool write(const uint8_t *data, size_t length);
-  string read();
   bool setBaudrate();
+  size_t read(uint8_t *buffer, size_t size);
+  size_t readline(string& buffer, size_t size);
 
 private:
   int m_fd;

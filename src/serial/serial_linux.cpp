@@ -1,7 +1,6 @@
 #include "serial/serial.h"
 
 #include <glob.h>
-#include <termios.h>
 #include <logger.hpp>
 
 
@@ -79,9 +78,17 @@ bool Serial::write(const uint8_t *data, size_t length) {
     return true;
 }
 
-string Serial::read() {
-    uint8_t* buffer;
+size_t Serial::read(uint8_t *buffer, size_t size) {
+    int bytes_read = ::read(m_fd, buffer, size);
+    if(bytes_read < 0) VL_LOG_DEBUG("ERROR", "READ ERROR");
 
+    return static_cast<size_t>(bytes_read);
+}
+
+size_t Serial::readline(string &buffer, size_t size) {
+    while(true) {
+        
+    }
 }
 
 bool Serial::setBaudrate() {

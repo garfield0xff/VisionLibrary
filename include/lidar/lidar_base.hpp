@@ -9,18 +9,16 @@
  */
 
 #include "serial/serial.h"
-#include "lidar/lidar_res.hpp"
+#include "thread.h"
 #include "logger.hpp"
 
 #include <vlstd.hpp>
 #include <vector>
 #include <unistd.h>
 #include <fcntl.h>
-#include <thread>
 #include <logger.hpp>
 #include <memory>   // for std::shared_ptr
-#include <atomic>   // for std::atomic
-#include <mutex>    // for std::mutex
+
 
 /**
  * @namespace vl
@@ -31,6 +29,15 @@ namespace vl
 namespace lidar 
 {
 
+struct PointCloud {
+    float x;
+    float y;
+    float distance;
+    uint8_t intensity;
+    float angle_deg;
+};
+    
+
 class BaseLidarController;
 
 /**
@@ -38,6 +45,7 @@ class BaseLidarController;
  * @brief   A shared pointer to a BaseLidarController.
  */
 typedef std::shared_ptr<BaseLidarController> LidarController;
+
 
 /**
  * @typedef Header
@@ -96,12 +104,21 @@ public:
      */
     virtual bool stopScan();
 
+    /**
+     * @brief Prints or logs serial status information.
+     * @return True if logging is successful, false otherwise.
+     * @note  추후에 Lidar 모듈 추가될때 수정 예정
+     */
+    virtual void readScanData() = 0; // Todo: Implement in derived LIDAR modules
+
     virtual bool initialize();
 
-    
-    virtual std::vector<PointCloud> getPointCloud() = 0;
-    
+    virtual std::queue<std::vector<PointCloud>> getPointCloud();
 
+    virtual std::vector<PointCloud> getLatestPointCloud();
+
+    virtual void updatePointCloud(std::vector<PointCloud>&& _point_cloud);
+        
     /**
      * @brief  Creates a new instance (shared pointer) of the controller.
      * @return A shared pointer to the newly created BaseLidarController.
@@ -113,6 +130,10 @@ protected:
     LidarDevice m_device;
 
     serial::Serial *m_serial = nullptr;
+
+    std::condition_variable data_ready;
+    std::queue<std::vector<PointCloud>> point_cloud_queue;
+    std::mutex point_cloud_mutex;
 
     /**
      * @brief The serial device port path or identifier.
@@ -140,17 +161,13 @@ protected:
     bool m_connected;
 
     /**
-     * @brief  write byte header to device file descriptor.
-     * @param  header The byte header to send.
-     * @return true is write command byte to device, false otherwise.
-     */
-    virtual bool sendSerialHeader(Header header) const;
-
-    /**
      * @brief run serial loggger
      * @return True if fetch serial Log success 
      */
     virtual bool runSerialLogger() = 0;
+
+    
+    virtual bool createThread() = 0;
 
     /**
      * @brief update header flag
@@ -160,22 +177,13 @@ protected:
      */
     virtual bool updateSerialState(int newFlag) = 0;
 
-    /**
-     * @brief Prints or logs serial status information.
-     * @return True if logging is successful, false otherwise.
-     * @note  추후에 Lidar 모듈 추가될때 수정 예정
-     */
-    virtual bool readSerialLog() = 0; // Todo: Implement in derived LIDAR modules
 
     /**
      * @brief Flag indicating whether the controller is currently scanning.
      */
     std::atomic<bool> m_isScanning;
 
-    /**
-     * @brief Thread object used to run the scanning loop.
-     */
-    std::thread m_scanThread;
+    
 
     /**
      * @brief Mutex for synchronizing access to shared resources.

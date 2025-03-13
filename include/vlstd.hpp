@@ -15,6 +15,9 @@ typedef unsigned long Bps;
 // Descriptor
 typedef int FileDescriptor;
 
+inline uint16_t ToUint16LE(uint8_t low, uint8_t high) {
+    return static_cast<uint16_t>(low) | (static_cast<uint16_t>(high) << 8);
+}
 
 }
 
