@@ -7,9 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenGL REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GLFW REQUIRED glfw3)
 find_package(glm CONFIG REQUIRED)
 find_package(GLEW REQUIRED)
+
+pkg_check_modules(GLFW REQUIRED glfw3)
+pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
+pkg_check_modules(GSTREAMER_APP REQUIRED gstreamer-app-1.0)
+pkg_check_modules(GSTREAMER_GL REQUIRED gstreamer-gl-1.0)
+
 
 find_package(Doxygen REQUIRED)
 if(Doxygen_FOUND)
@@ -69,11 +74,23 @@ add_executable(VL1
 
 target_include_directories(VL1 PRIVATE 
     ${GLFW_INCLUDE_DIRS}
+    ${GSTREAMER_INCLUDE_DIRS}
+    ${GSTREAMER_APP_INCLUDE_DIRS}
+    ${GSTREAMER_GL_INCLUDE_DIRS}
     ${OpenCV_INCLUDE_DIRS}
+)
+
+target_link_directories(VL1 PRIVATE 
+    ${GSTREAMER_LIBRARY_DIRS}
+    ${GSTREAMER_APP_LIBRARY_DIRS}
+    ${GSTREAMER_GL_LIBRARY_DIRS}
 )
 
 target_link_libraries(VL1 PRIVATE
     ${GLFW_LIBRARIES}
+    ${GSTREAMER_LIBRARIES}
+    ${GSTREAMER_APP_LIBRARIES}
+    ${GSTREAMER_GL_LIBRARIES}
     ${OpenCV_LIBS}
     GLEW::GLEW
     OpenGL::GL

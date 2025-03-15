@@ -91,7 +91,7 @@ public:
     bool loadLidar();
 
 
-    bool iScanning() { return m_isScanning; };
+    bool isScanning() { return m_isScanning; };
 
     
     bool setBuadrate(int baudrate);

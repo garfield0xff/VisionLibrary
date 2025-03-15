@@ -100,6 +100,15 @@ GLuint WindowFrameBuffer::loadShader(const char* vertex_file_path, const char* f
     return programId;
 }
 
+void WindowFrameBuffer::render2dVideo() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBindTexture(GL_TEXTURE_2D, m_texture);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glfwSwapBuffers(m_window);
+
+}
+
 void WindowFrameBuffer::render2dPoint(const std::vector<float>& vertices, float fov_deg) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_PROGRAM_POINT_SIZE); 

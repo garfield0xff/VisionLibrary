@@ -35,16 +35,21 @@ public:
     GLuint compileShaderFile(const char* file_path, GLenum shaderType);
     GLuint loadShader(const char* vertex_file_path, const char* fragment_file_path);
     void render2dPoint(const std::vector<float>&  verticies, float fov_deg);
+    void render2dVideo();
+    void render2dVideo(const std::vector<float>& verticies, float fov_deg);
     bool isCloseWindow();
     void closeWindow();
+    
     
 protected:
     GLFWwindow* m_window;
     GLuint m_programId;
+    GLuint m_texture;
     const char* m_window_name;
     int m_width;
     int m_height;
 };
+
 
 
 #endif // WINDOW_FB_HPP_

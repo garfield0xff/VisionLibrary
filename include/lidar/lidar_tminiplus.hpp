@@ -97,6 +97,7 @@ public:
     bool restart();
     bool setWindowFrameBuffer(WindowFrameBuffer* wfb);
     
+    
 protected:
     bool runSerialLogger()                         override;
     bool createThread()                            override;
@@ -108,6 +109,7 @@ private:
     WindowFrameBuffer *m_wfb;
     std::mutex m_pointCloudMutex;
     std::vector<PointCloud> m_lastFrame;
+    
     
 }; // class YDLidarController
 
