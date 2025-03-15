@@ -52,25 +52,36 @@ std::queue<std::vector<PointCloud>> YDLidarController::getPointCloud() {
 }
 
 void YDLidarController::showPointCloud() {
-
     float camera_fov_deg = 90.0f;
+    std::vector<float> verticies;
+    std::ofstream pcl_file("pointcloud_output.pcl", std::ofstream::trunc);
 
-    while (m_isScanning && !glfwWindowShouldClose(m_wfb->getWindow())) {
+    if (!pcl_file.is_open()) {
+        std::cerr << "Failed to open log file!" << std::endl;
+        return;
+    }
+
+    while (m_isScanning && !m_wfb->isCloseWindow()) {
         std::vector<PointCloud> latest_cloud = this->getLatestPointCloud();
-        std::vector<float> verticies;
-        for(const auto& p : latest_cloud) {
-            verticies.push_back(p.x);
-            verticies.push_back(p.y);
-            verticies.push_back(p.distance);
+        verticies.clear();
+        
+        for(int i = 0; i < latest_cloud.size(); i++) {
+            float x = latest_cloud[i].x;
+            float y = latest_cloud[i].y;
+            float dist = latest_cloud[i].distance;
+            verticies.push_back(latest_cloud[i].x);
+            verticies.push_back(latest_cloud[i].y);
+            verticies.push_back(0.0f);
+            pcl_file << x << " " << y << " " << dist << "\n";
         }        
 
         m_wfb->render2dPoint(verticies, camera_fov_deg);
         glfwPollEvents();
         std::this_thread::sleep_for(std::chrono::milliseconds(30)); 
     }
-    glfwSetWindowShouldClose(m_wfb->getWindow(), GLFW_TRUE);
+    pcl_file.close();
+    m_wfb->closeWindow();
 }
-
 
 bool YDLidarController::runSerialLogger() {
     // m_scanThread = std::thread([this]() { readSerialLog();});
@@ -136,8 +147,9 @@ void YDLidarController::readScanData()
                 float angle_rad = angle_deg * static_cast<float>(M_PI) / 180.0f;
                 
                 PointCloud pc;
-                pc.x = static_cast<float>(distance) * std::cos(angle_rad);
-                pc.y = static_cast<float>(distance) * std::sin(angle_rad);
+                pc.x = (s1 > 50) ? static_cast<float>(distance) * std::cos(angle_rad) : 0;
+                pc.y = (s1 > 50) ? static_cast<float>(distance) * std::sin(angle_rad) : 0;
+                pc.intensity = s1;
                 pc.distance  = static_cast<float>(distance);
                 pc.angle_deg = angle_deg;
 

@@ -5,6 +5,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -32,9 +35,12 @@ public:
     GLuint compileShaderFile(const char* file_path, GLenum shaderType);
     GLuint loadShader(const char* vertex_file_path, const char* fragment_file_path);
     void render2dPoint(const std::vector<float>&  verticies, float fov_deg);
+    bool isCloseWindow();
+    void closeWindow();
     
 protected:
     GLFWwindow* m_window;
+    GLuint m_programId;
     const char* m_window_name;
     int m_width;
     int m_height;

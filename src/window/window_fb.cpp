@@ -96,26 +96,47 @@ GLuint WindowFrameBuffer::loadShader(const char* vertex_file_path, const char* f
 
     glDeleteShader(vertexShaderId);
     glDeleteShader(fragmentShaderId);
+    m_programId = programId;
     return programId;
 }
 
-void WindowFrameBuffer::render2dPoint(const std::vector<float>& verticies, float fov_deg) {
-    glClear(GL_COLOR_BUFFER_BIT);
+void WindowFrameBuffer::render2dPoint(const std::vector<float>& vertices, float fov_deg) {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_PROGRAM_POINT_SIZE); 
 
-    GLuint vertexArrayId, vertexBufferId;
-    glGenVertexArrays(1, &vertexArrayId);
+    float aspect_ratio = static_cast<float>(m_width) / m_height;
+    glm::mat4 projection = glm::ortho(-200.f * aspect_ratio, 200.f * aspect_ratio, -200.f, 200.0f, -1.0f, 1.0f);
+
+    GLuint projectionLoc = glGetUniformLocation(m_programId, "projection");
+    glUseProgram(m_programId);
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+    static GLuint vertexArrayId = 0;
+    static GLuint vertexBufferId = 0;
+
+    if (vertexArrayId == 0) {
+        glGenVertexArrays(1, &vertexArrayId);
+        glGenBuffers(1, &vertexBufferId);
+    }
+
     glBindVertexArray(vertexArrayId);
-
-    glGenBuffers(1, &vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    glBufferData(GL_ARRAY_BUFFER, verticies.size() * sizeof(float), verticies.data(), GL_STATIC_DRAW);
+
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_DYNAMIC_DRAW);
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-    glDrawArrays(GL_POINTS, 0, verticies.size() / 3);
-    glfwSwapBuffers(m_window);
+    glDrawArrays(GL_POINTS, 0, vertices.size() / 3);
 
-    glDeleteBuffers(1, &vertexBufferId);
-    glDeleteVertexArrays(1, &vertexArrayId);
+    glfwSwapBuffers(m_window);
+}
+
+
+bool WindowFrameBuffer::isCloseWindow() {
+    return glfwWindowShouldClose(m_window);
+}
+
+void WindowFrameBuffer::closeWindow() {
+    glfwSetWindowShouldClose(m_window, GLFW_TRUE);
 }
