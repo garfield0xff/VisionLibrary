@@ -81,21 +81,22 @@ public:
     bool stopScan()                             override;
     void readScanData()                         override;
     LidarController newController()      const  override;
-    // shared_ptr<vector<PointCloud>> getLatestPointCloud();
+    std::vector<PointCloud> getLatestPointCloud() override;
+    virtual std::queue<std::vector<PointCloud>> getPointCloud() override;
 
 
     void showPointCloud(); 
     bool getDeviceInfo();
+
+
     bool getScanFreq();
     bool IncreaseScanFreq0_1Hz();
     bool decreaseScanFreq0_1Hz();
     bool IncreaseScanFreq1Hz();
     bool decreaseScanFreq1Hz();
     bool restart();
-
+    bool setWindowFrameBuffer(WindowFrameBuffer* wfb);
     
-
-
 protected:
     bool runSerialLogger()                         override;
     bool createThread()                            override;
@@ -104,9 +105,10 @@ protected:
 
 private:
     vl::ThreadPool *tp;
+    WindowFrameBuffer *m_wfb;
     std::mutex m_pointCloudMutex;
     std::vector<PointCloud> m_lastFrame;
-
+    
 }; // class YDLidarController
 
 } // namespace lidar

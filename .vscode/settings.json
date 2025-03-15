@@ -73,6 +73,14 @@
         "utility": "cpp",
         "thread": "cpp",
         "cinttypes": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "deque": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "chrono": "cpp",
+        "stop_token": "cpp",
+        "strstream": "cpp",
+        "list": "cpp",
+        "*.ipp": "cpp"
     }
 }

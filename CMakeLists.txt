@@ -9,24 +9,25 @@ find_package(OpenCV REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLFW REQUIRED glfw3)
 find_package(glm CONFIG REQUIRED)
+find_package(GLEW REQUIRED)
 
-# find_package(Doxygen REQUIRED)
-# if(Doxygen_FOUND)
-#     set(DOXYGEN_IN      ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
-#     set(DOXYGEN_OUT     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+find_package(Doxygen REQUIRED)
+if(Doxygen_FOUND)
+    set(DOXYGEN_IN      ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
+    set(DOXYGEN_OUT     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 
-#     configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
 
-#     add_custom_target( doc ALL
-#         COMMAND ${DOXYGEN_EXECUTABLE}   ${DOXYGEN_OUT}
-#         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-#         COMMENT "Generating API DOCUMENT with DOXYGEN"
-#         VERBATIM
-#     )
+    add_custom_target( doc ALL
+        COMMAND ${DOXYGEN_EXECUTABLE}   ${DOXYGEN_OUT}
+        WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Generating API DOCUMENT with DOXYGEN"
+        VERBATIM
+    )
 
-# endif()
+endif()
 
-# set(CMAKE_DOXYGEN_LAYOUT "${CMAKE_CURRENT_BINARY_DIR}/docs/layout.xml")
+set(CMAKE_DOXYGEN_LAYOUT "${CMAKE_CURRENT_BINARY_DIR}/docs/layout.xml")
 
 
 ## GOOGLE TEST
@@ -47,6 +48,13 @@ foreach(src_file ${SOURCE})
 endforeach()
 
 file(GLOB INCLUDE_DIRS RELATIVE ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/include/*)
+file(GLOB_RECURSE SHADER_FILES asset/shader/*.fragmentshader asset/shader/*.vertexshader)
+
+foreach(shader_file ${SHADER_FILES})
+    file(RELATIVE_PATH shader_relative_path ${CMAKE_CURRENT_SOURCE_DIR} ${shader_file})
+    configure_file(${shader_file} ${shader_relative_path} COPYONLY)
+endforeach()
+
 list(REMOVE_ITEM INCLUDE_DIRS "ts")
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
@@ -55,7 +63,9 @@ foreach(dir ${INCLUDE_DIRS})
     include_directories(${CMAKE_SOURCE_DIR}/include/${dir})
 endforeach()
 
-add_executable(VL1 ${SOURCE})
+add_executable(VL1 
+    ${SOURCE}
+)
 
 target_include_directories(VL1 PRIVATE 
     ${GLFW_INCLUDE_DIRS}
@@ -65,6 +75,7 @@ target_include_directories(VL1 PRIVATE
 target_link_libraries(VL1 PRIVATE
     ${GLFW_LIBRARIES}
     ${OpenCV_LIBS}
+    GLEW::GLEW
     OpenGL::GL
     glm::glm
     pthread

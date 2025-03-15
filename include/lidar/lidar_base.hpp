@@ -11,6 +11,7 @@
 #include "serial/serial.h"
 #include "thread.h"
 #include "logger.hpp"
+#include "window_fb.hpp"
 
 #include <vlstd.hpp>
 #include <vector>
@@ -88,6 +89,9 @@ public:
      * @brief show lidar ports and set ports
      */
     bool loadLidar();
+
+
+    bool iScanning() { return m_isScanning; };
 
     
     bool setBuadrate(int baudrate);

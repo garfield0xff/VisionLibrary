@@ -15,8 +15,6 @@ YDLidarController::~YDLidarController()
     std::cout << "YDLidarController deleted" << std::endl;
 }
 
-
-
 bool YDLidarController::startScan()
 {
     uint8_t start_bit[2] = {START_BIT, LIDAR_START_SCAN};
@@ -28,29 +26,49 @@ bool YDLidarController::startScan()
     m_isScanning = true;
 
     if(!createThread()) VL_LOG_DEBUG("THREAD", "CREATE ERROR");
-
-    
-    
     return true;
 }
 
 bool YDLidarController::createThread()
 {
-    tp = new ThreadPool(2);
+    tp = new ThreadPool(1);
     tp->createThread(&YDLidarController::readScanData, this);
-    tp->createThread(&YDLidarController::showPointCloud, this);
-    
     return true;
 }
 
+std::vector<PointCloud> YDLidarController::getLatestPointCloud() {
+    std::unique_lock<std::mutex> lock(point_cloud_mutex);
+    data_ready.wait(lock, [this] { return !point_cloud_queue.empty(); });
+
+    std::vector<PointCloud> latest = std::move(point_cloud_queue.front());
+    point_cloud_queue.pop();
+    return latest;
+}
+
+std::queue<std::vector<PointCloud>> YDLidarController::getPointCloud() {
+    std::unique_lock<std::mutex> lock(point_cloud_mutex);
+    data_ready.wait(lock, [this] {return !point_cloud_queue.empty();});
+    return point_cloud_queue;
+}
+
 void YDLidarController::showPointCloud() {
-    while (m_isScanning) {
+
+    float camera_fov_deg = 90.0f;
+
+    while (m_isScanning && !glfwWindowShouldClose(m_wfb->getWindow())) {
         std::vector<PointCloud> latest_cloud = this->getLatestPointCloud();
-        for (const auto& p : latest_cloud) {
-            std::cout << "x: " << p.x << ", y: " << p.y << std::endl;
-        }
+        std::vector<float> verticies;
+        for(const auto& p : latest_cloud) {
+            verticies.push_back(p.x);
+            verticies.push_back(p.y);
+            verticies.push_back(p.distance);
+        }        
+
+        m_wfb->render2dPoint(verticies, camera_fov_deg);
+        glfwPollEvents();
         std::this_thread::sleep_for(std::chrono::milliseconds(30)); 
     }
+    glfwSetWindowShouldClose(m_wfb->getWindow(), GLFW_TRUE);
 }
 
 
@@ -145,6 +163,11 @@ bool YDLidarController::stopScan()
 
     tp->joinAll();
     
+    return true;
+}
+
+bool YDLidarController::setWindowFrameBuffer(WindowFrameBuffer* wfb) {
+    m_wfb = wfb;
     return true;
 }
 
